@@ -1,10 +1,6 @@
 package davidneilan.com;
 
-import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 
 /**
  * A game using Slick2d
@@ -17,15 +13,29 @@ public class Game extends BasicGame {
     private static final int HEIGHT = 600;
     
     /** A counter... */
-    private int counter;
+    private double counter;
 
     public Game() {
         super("A Slick2d game");
     }
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-        g.drawString("Hello, " + Integer.toString(counter) + "!", 50, 50);
+        g.setColor(Color.white);
+        g.drawString("Hello, " + Double.toString(counter) + "!", 50, 50);
 
+        // rotating square
+        int centerX = WIDTH / 2;
+        int centerY = HEIGHT / 2;
+        int squareWidth = 50;
+        int rotateDist = 200;
+        double stage = ((counter % 1000.0) / 1000) * (2 * Math.PI);
+
+        g.setColor(Color.white);
+
+        int squareX = centerX + (int) (Math.cos(stage) * rotateDist) - (squareWidth / 2);
+        int squareY = centerY + (int) (Math.sin(stage) * rotateDist) - (squareWidth / 2);
+
+        g.fillRect(squareX - (squareWidth / 2), squareY - (squareWidth / 2), squareWidth, squareWidth);
     }
 
     @Override
@@ -35,13 +45,16 @@ public class Game extends BasicGame {
 
     @Override
     public void update(GameContainer container, int delta) throws SlickException {
-        counter++;
+        counter += delta;
     }
     
     public static void main(String[] args) throws SlickException {
         AppGameContainer app = new AppGameContainer(new Game());
         app.setDisplayMode(WIDTH, HEIGHT, false);
         app.setForceExit(false);
+        app.setTargetFrameRate(60);
+        app.setMaximumLogicUpdateInterval(16);
+        app.setVSync(true);
         app.start();
     }
 
