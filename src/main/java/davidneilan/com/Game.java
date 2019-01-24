@@ -15,9 +15,13 @@ public class Game extends BasicGame {
     /** A counter... */
     private double counter;
 
+    private Explosion1 ex;
+
     public Game() {
         super("A Slick2d game");
     }
+
+
 
     public void render(GameContainer container, Graphics g) throws SlickException {
         g.setColor(Color.white);
@@ -36,11 +40,19 @@ public class Game extends BasicGame {
         int squareY = centerY + (int) (Math.sin(stage) * rotateDist) - (squareWidth / 2);
 
         g.fillRect(squareX - (squareWidth / 2), squareY - (squareWidth / 2), squareWidth, squareWidth);
+
+
+        //draw test animation
+        ex.draw();
+
     }
 
     @Override
     public void init(GameContainer container) throws SlickException {
         counter = 0;
+
+        ex = new Explosion1();
+
     }
 
     @Override
