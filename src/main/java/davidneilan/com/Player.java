@@ -3,17 +3,18 @@ package davidneilan.com;
 import org.newdawn.slick.Animation;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Player {
+    private static final int MAX_ITEMS = 6;
+
     private List<Item> inventory;
     private Animation animation;
     private Position position;
     private int money;
 
     public Player(Animation animation, Position position, int money){
-        this.inventory = new ArrayList<Item>(6);
+        this.inventory = new ArrayList<Item>(Player.MAX_ITEMS);
         this.animation = animation;
         this.position = position;
         this.money = money;
@@ -23,24 +24,12 @@ public class Player {
         return inventory;
     }
 
-    public void setInventory(List<Item> inventory) {
-        this.inventory = inventory;
-    }
-
     public Animation getAnimation() {
         return animation;
     }
 
-    public void setAnimation(Animation animation) {
-        this.animation = animation;
-    }
-
     public Position getPosition() {
         return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
     }
 
     public int getMoney() {
