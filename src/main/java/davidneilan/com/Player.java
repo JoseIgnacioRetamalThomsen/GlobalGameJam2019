@@ -40,6 +40,12 @@ public class Player {
         this.money += amount;
     }
 
+    /**
+     * Takes given amount of money from players balance.
+     *
+     * @param amount the amount we want to take out.
+     * @return {@code true} if amount was taken. If balance in not big enough {@code false}.
+     */
     public boolean takeMoney(int amount){
         if( this.money > amount){
             this.money -= amount;
