@@ -53,4 +53,41 @@ public class Player {
         }
         return false;
     }
+
+    /**
+     * Adds Item to the players inventory.
+     *
+     * @param item the Iten we want to add to inventory.
+     * @return {@code true} if item is added to inventory (inventory a free spaces). Otherwise {@code false}.
+     */
+    public boolean addToInventory(Item item){
+        if( this.inventory.size() == Player.MAX_ITEMS ){
+            this.inventory.add(item);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Gets item from the user inventory.
+     *
+     * @param index the item index in inventory.
+     * @return {@code null} if inventory at given index is empty otherwise requested item.
+     */
+    public Item getItem(int index){
+        if( this.inventory.size() < index +1 ){ return null; }
+        return this.inventory.get(index);
+    }
+
+    /**
+     * Drops (removes) item from players inventory.
+     *
+     * @param index the index of the item we want to remove.
+     */
+    public void dropItem(int index){
+        if( this.inventory.size() < index +1 ){ return; }
+        this.inventory.remove(index);
+    }
+
+
 }
