@@ -32,9 +32,24 @@ public class Game extends BasicGame {
     }
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-        img.draw(20, 20);
+
     }
-    
+
+    @Override
+    public void mouseMoved(int oldX, int oldY, int newX, int newY) {
+
+    }
+
+    @Override
+    public void mousePressed(int button, int x, int y) {
+
+    }
+
+    @Override
+    public void mouseReleased(int button, int x, int y) {
+
+    }
+
     public static void main(String[] args) throws SlickException {
         AppGameContainer app = new AppGameContainer(new ScalableGame(new Game(), WIDTH, HEIGHT, true));
 
