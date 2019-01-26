@@ -154,6 +154,7 @@ public class Inventory {
         if(selectedItem>0){
             this.removeItem(selectedItem);
             player.dropItem(selectedItem);
+            this.selectedItem=0;
         }
     }
 }

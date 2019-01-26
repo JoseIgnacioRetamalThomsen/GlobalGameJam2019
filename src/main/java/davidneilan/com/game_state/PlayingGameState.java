@@ -91,6 +91,11 @@ public class PlayingGameState extends TransferableGameState {
         inventory.addItem(phone);
         inventory.addItem(tyre);
         inventory.addItem(tyreIron);
+        inventory.addItem(tyreIron);
+        inventory.addItem(tyreIron);
+
+
+
 
 
 
