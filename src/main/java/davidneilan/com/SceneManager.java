@@ -1,12 +1,11 @@
 package davidneilan.com;
 
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class SceneManager {
         Image[] objFrames;
         SceneObject sceneObj;
         Image sceneBg;
-        BufferedImage objMap = null;
+        Image objMap = null;
 
         // init scene 1
         sceneObjs = new ArrayList<SceneObject>();
@@ -33,14 +32,10 @@ public class SceneManager {
         objFrames[1] = new Image("/res/sprites/drawers-open.png");
         Animation anim = new Animation(objFrames, 1);
         anim.setAutoUpdate(false);
-        sceneObj = new SceneObject(Color.RED, anim);
+        sceneObj = new SceneObject(Color.red, anim);
         sceneObjs.add(sceneObj);
         sceneBg = new Image("/res/sprites/BasicRoom.png");
-        try {
-            objMap = ImageIO.read(new File("/res/sprites/scene1-object-map.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        objMap = new Image("/res/sprites/scene1-object-map-test2.png");
         scenes[0] = new Scene(sceneBg, objMap, sceneObjs);
     }
 
