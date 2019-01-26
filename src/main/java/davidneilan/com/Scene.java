@@ -1,6 +1,7 @@
 package davidneilan.com;
 
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -25,6 +26,14 @@ public class Scene {
                 obj.onClick();
                 return;
             }
+        }
+    }
+
+    public void render() throws SlickException {
+        background.draw();
+
+        for (SceneObject obj : sceneObjects) {
+            obj.getSprite().draw();
         }
     }
 }

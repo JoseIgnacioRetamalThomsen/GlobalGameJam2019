@@ -85,7 +85,7 @@ public class Game extends BasicGame {
         AppGameContainer app = new AppGameContainer(new ScalableGame(new Game(), WIDTH, HEIGHT, false));
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-        app.setDisplayMode(screenSize.width, screenSize.height, false);
+        app.setDisplayMode(screenSize.width, screenSize.height, true);
         app.setForceExit(false);
         app.setTargetFrameRate(60);
         app.setMaximumLogicUpdateInterval(16);
