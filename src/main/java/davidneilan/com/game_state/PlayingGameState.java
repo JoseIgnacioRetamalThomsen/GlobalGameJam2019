@@ -105,14 +105,10 @@ public class PlayingGameState extends TransferableGameState {
         sceneManager.render(g);
 
 
-<<<<<<< HEAD
         //say gelow
         g.setColor(Color.blue);
         g.drawString(" " + language.getString("S1_KNOCK"), 600, 600);
-=======
 
-
->>>>>>> 614a273cff8e0536602aa6c9e543938b6f16de1f
 
         if (PlayingGameState.debug) {
             g.setColor(Color.red);
