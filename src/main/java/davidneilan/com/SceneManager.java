@@ -37,7 +37,7 @@ public class SceneManager {
         sceneObj.setItemShowingFrame(1);
         sceneObjs.add(sceneObj);
         sceneObjs.add(new SceneObject("door",new Color(76,255,0),blankAnim));
-        sceneObjs.add(new SceneObject("windows",new Color(72,0,255),blankAnim));
+        sceneObjs.add(new SceneObject("window",new Color(72,0,255),blankAnim));
         sceneBg = new Image("Assets/Backgrounds/Apartment.png");
         objMap = new Image("Assets/Sprites/scene1-object-map.png");
         scenes[0] = new Scene(sceneBg, objMap, sceneObjs);

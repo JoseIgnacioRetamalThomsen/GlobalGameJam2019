@@ -207,6 +207,21 @@ public class PlayingGameState extends TransferableGameState {
                 }
                 isTextArea = true;
             }
+            else if( itemClicked.getSceneObject().getName().equals("window") ){
+
+                isTextAreaOption=true;
+                this.textArea.setText(String.format("%s %s %s A \n %s %s %s S",
+                        language.getString("S1_FOR"),
+                        language.getString("S2_WIN_1"),
+                        language.getString("S1_PRESS"),
+                        language.getString("S1_FOR"),
+                        language.getString("S3_WIN_2"),
+                        language.getString("S1_PRESS")
+                ));
+
+                isTextArea = true;
+            }
+
         } else {
             System.out.println("Clicked nothing");
         }
