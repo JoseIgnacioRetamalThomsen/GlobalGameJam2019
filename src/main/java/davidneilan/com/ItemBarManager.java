@@ -2,9 +2,12 @@ package davidneilan.com;
 
 public class ItemBarManager {
 
-    private int barX, barY, boxSize;
+    private int barX;//bar position x
+    private int barY;//bar position y
+    private int boxSize;
 
     public ItemBarManager(int barX, int barY, int boxSize) {
+
         this.barX = barX;
         this.barY = barY;
         this.boxSize = boxSize;
@@ -19,22 +22,11 @@ public class ItemBarManager {
      * @return box number 1 to 6 , -1 if no box clicked
      */
     public int getSlot(int x, int y) {
-        if (x >= barX && x < barX + boxSize && y >= barY && y < barY + boxSize) {
 
-            return 1;
-        } else if (x >= barX && x < barX + boxSize * 2 && y >= barY && y < barY + boxSize) {
+        if (x >= barX && x < barX + boxSize * 6 && y >= barY && y < barY + boxSize) {
 
-            return 2;
-        } else if (x >= barX && x < barX + boxSize * 3 && y >= barY && y < barY + boxSize ) {
-            return 3;
-        } else if (x >= barX && x < barX + boxSize * 4 && y >= barY && y < barY + boxSize ) {
-            return 4;
-        } else if (x >= barX && x < barX + boxSize * 5 && y >= barY && y < barY + boxSize ) {
-            return 5;
-        } else if (x >= barX && x < barX + boxSize * 6 && y >= barY && y < barY + boxSize) {
-            return 6;
+            return (int) (x - barX) / 135 + 1;
         }
-
         return -1;
     }
 }
