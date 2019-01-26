@@ -37,7 +37,7 @@ public class Position implements Comparable<Position>{
      *
      * @param pos the position to copy.
      */
-    public Position of(Position pos){ return new Position(pos.getX(),  pos.getY()); }
+    public static Position of(Position pos){ return new Position(pos.getX(),  pos.getY()); }
 
     /** Get position X value */
     public double getX() { return this.x; }
@@ -69,14 +69,6 @@ public class Position implements Comparable<Position>{
         }
         return false;
     }
-
-//    @Override
-//    public int hashCode() {
-//        // https://stackoverflow.com/a/11742634
-//        int hash = 31;
-//        return (int)(x *hash +y);
-//    }
-
 
     @Override
     public int hashCode() {
