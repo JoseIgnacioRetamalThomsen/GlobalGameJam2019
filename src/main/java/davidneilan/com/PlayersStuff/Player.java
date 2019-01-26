@@ -1,5 +1,6 @@
-package davidneilan.com;
+package davidneilan.com.PlayersStuff;
 
+import davidneilan.com.Item;
 import org.newdawn.slick.Animation;
 
 import java.util.ArrayList;
@@ -90,7 +91,7 @@ public class Player {
     }
 
     public void render(){
-        
+
     }
 
 

@@ -1,4 +1,4 @@
-package davidneilan.com;
+package davidneilan.com.PlayersStuff;
 
 import java.util.Objects;
 
