@@ -19,7 +19,7 @@ public class ItemScreenPosition {
         return y;
     }
 
-    public float getDrawSize() {
+    public int getDrawSize() {
         return drawSize;
     }
 

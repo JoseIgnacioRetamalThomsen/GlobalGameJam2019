@@ -47,7 +47,7 @@ public class PlayingGameState extends TransferableGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        //imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
+        imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
 
 
 
