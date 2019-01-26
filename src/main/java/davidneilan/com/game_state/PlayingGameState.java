@@ -31,7 +31,7 @@ public class PlayingGameState extends TransferableGameState {
     Item phone;
     Item tyre;
 
-    private Language language;
+    public static Language language;
 
     public static boolean debug = false;
     private static final int DEBUG_BUTTON = Input.KEY_LSHIFT;
@@ -57,9 +57,10 @@ public class PlayingGameState extends TransferableGameState {
 
         sceneManager = new SceneManager();
         sceneManager.init();
-
+/*
 
         String lan = "es";
+        System.out.println("langua "+langaugeStatic );
         switch (langaugeStatic) {
             case 0:
                 language = new English();
@@ -71,7 +72,7 @@ public class PlayingGameState extends TransferableGameState {
                 language = new Spanish();
                 break;
         }
-
+*/
         // create player
         this.player = new Player(HeroAnimation.getAnimation(), Position.of(900, 900), 1000);
         inventory = new Inventory(barX, barY, 135,player);
@@ -107,7 +108,7 @@ public class PlayingGameState extends TransferableGameState {
 
         //say gelow
         g.setColor(Color.blue);
-        g.drawString(" " + language.getString("S1_KNOCK"), 600, 600);
+        g.drawString(" " + language.getString("S0_GREET"), 600, 600);
 
 
         if (PlayingGameState.debug) {
