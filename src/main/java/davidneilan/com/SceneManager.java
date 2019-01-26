@@ -13,7 +13,7 @@ public class SceneManager {
     private int currentScene;
 
     public void init() throws SlickException {
-        scenes = new Scene[1];
+        scenes = new Scene[2];
         currentScene = 0;
 
         List<SceneObject> sceneObjs;
@@ -28,7 +28,7 @@ public class SceneManager {
         objFrames[0] = new Image("Assets/Sprites/drawers.png");
         objFrames[1] = new Image("Assets/Sprites/drawers-open.png");
         Animation blankAnim = new Animation();
-        blankAnim.addFrame(new Image("Assets/Sprites/transparent.png"),100);
+        blankAnim.addFrame(new Image("Assets/Sprites/transparent.png"), 100);
         Animation anim = new Animation(objFrames, 1);
         anim.setAutoUpdate(false);
         sceneObj = new SceneObject("drawer", Color.red, anim);
@@ -36,11 +36,26 @@ public class SceneManager {
                 new ItemScreenPosition(1533, 549, 20));
         sceneObj.setItemShowingFrame(1);
         sceneObjs.add(sceneObj);
+<<<<<<< HEAD
         sceneObjs.add(new SceneObject("door",new Color(76,255,0),blankAnim));
         sceneObjs.add(new SceneObject("window",new Color(72,0,255),blankAnim));
+=======
+        sceneObjs.add(new SceneObject("door", new Color(76, 255, 0), blankAnim));
+        sceneObjs.add(new SceneObject("window", new Color(72, 0, 255), blankAnim));
+>>>>>>> 1a3278dd410c31fc56344fe1bf090bec47e33be8
         sceneBg = new Image("Assets/Backgrounds/Apartment.png");
         objMap = new Image("Assets/Sprites/scene1-object-map.png");
         scenes[0] = new Scene(sceneBg, objMap, sceneObjs);
+
+        // init scene 2
+        sceneBg = new Image("Assets/Backgrounds/Street1.png");
+        objMap = new Image("Assets/Sprites/street-object-map.png");
+        sceneObjs = new ArrayList<>();
+        anim = new Animation();
+        anim.addFrame(new Image("Assets/Sprites/scene-1-door.png"), 1);
+        sceneObj = new SceneObject("pawn door", Color.red, anim);
+        sceneObjs.add(sceneObj);
+        scenes[1] = new Scene(sceneBg, objMap, sceneObjs);
     }
 
     public void render(Graphics g) throws SlickException {
@@ -49,5 +64,9 @@ public class SceneManager {
 
     public ClickedObjects onSceneClick(int clickX, int clickY) {
         return scenes[currentScene].onSceneClick(clickX, clickY);
+    }
+
+    public void goToScene(int scene) {
+        currentScene = scene;
     }
 }
