@@ -29,7 +29,7 @@ public class SceneManager {
         objFrames[1] = new Image("Assets/Sprites/drawers-open.png");
         Animation anim = new Animation(objFrames, 1);
         anim.setAutoUpdate(false);
-        sceneObj = new SceneObject(Color.red, anim);
+        sceneObj = new SceneObject("drawer", Color.red, anim);
         sceneObj.addTakableItem(new Item("Key", new Image("Assets/Sprites/key.png")),
                 new ItemScreenPosition(1533, 549, 20));
         sceneObj.setItemShowingFrame(1);
@@ -43,7 +43,7 @@ public class SceneManager {
         scenes[currentScene].render(g);
     }
 
-    public Item onSceneClick(int clickX, int clickY) {
+    public ClickedObjects onSceneClick(int clickX, int clickY) {
         return scenes[currentScene].onSceneClick(clickX, clickY);
     }
 }
