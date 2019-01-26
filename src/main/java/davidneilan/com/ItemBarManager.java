@@ -24,7 +24,7 @@ public class ItemBarManager {
         this.boxSize = boxSize;
 
         try {
-            imgBar = new Image("res/sprites/ItemBarBackground.png");
+            imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
         } catch (SlickException e) {
             e.printStackTrace();
         }
