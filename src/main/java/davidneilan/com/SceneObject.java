@@ -10,13 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SceneObject {
+    private String name;
     private Color color;
     private Animation anim;
     private List<Item> items;
     private List<ItemScreenPosition> itemPosList;
     private int itemShowingFrame;
 
-    public SceneObject(Color color, Animation anim) {
+    public SceneObject(String name, Color color, Animation anim) {
+        this.name = name;
         this.color = color;
         this.anim = anim;
 
@@ -35,6 +37,10 @@ public class SceneObject {
 
     public Color getColor() {
         return color;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void onClick() {

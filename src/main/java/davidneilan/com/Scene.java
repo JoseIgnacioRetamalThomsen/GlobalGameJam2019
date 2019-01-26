@@ -19,7 +19,21 @@ public class Scene {
         this.sceneObjects = sceneObjects;
     }
 
-    public Item onSceneClick(int clickX, int clickY) {
+    public ClickedObjects onSceneClick(int clickX, int clickY) {
+        ClickedObjects clickedObjects = new ClickedObjects();
+
+        // check for click on scene object
+        Color clickedColor = new Color(objectMap.getColor(clickX, clickY));
+
+        for (SceneObject obj : sceneObjects) {
+            if (obj.getColor().equals(clickedColor)) {
+                obj.onClick();
+                clickedObjects.setSceneObject(obj);
+                break;
+            }
+        }
+
+        outerLoop:
         for (SceneObject sceneObject : sceneObjects) {
             if (sceneObject.itemsShowing()) {
                 List<Item> items = sceneObject.getItems();
@@ -34,22 +48,14 @@ public class Scene {
                     if (bounds.contains(clickX, clickY)) {
                         items.remove(i);
                         posList.remove(i);
-                        return item;
+                        clickedObjects.setItem(item);
+                        break outerLoop;
                     }
                 }
             }
         }
 
-        // check for click on scene object
-        Color clickedColor = new Color(objectMap.getColor(clickX, clickY));
-
-        for (SceneObject obj : sceneObjects) {
-            if (obj.getColor().equals(clickedColor)) {
-                obj.onClick();
-            }
-        }
-
-        return null;
+        return clickedObjects;
     }
 
     public void render(Graphics g) throws SlickException {

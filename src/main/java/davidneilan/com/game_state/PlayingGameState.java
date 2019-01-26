@@ -1,5 +1,6 @@
 package davidneilan.com.game_state;
 
+import davidneilan.com.ClickedObjects;
 import davidneilan.com.Item;
 import davidneilan.com.Inventory;
 import davidneilan.com.PlayersStuff.HeroAnimation;
@@ -130,7 +131,7 @@ public class PlayingGameState extends TransferableGameState {
 
             //say gelow
             g.setColor(Color.blue);
-            g.drawString(" " + language.getString("Welcome"), 600, 600);
+            g.drawString(" " + language.getString("S1_KNOCK"), 600, 600);
         }
 
         // render player movement
@@ -140,8 +141,13 @@ public class PlayingGameState extends TransferableGameState {
         //show dialog
 
         // Show text area
+<<<<<<< HEAD
 
         this.textArea.setText(language.getString("S0_GREET"));
+=======
+        this.textArea.setText(language.getString("S1_KNOCK"));
+        this.textArea.render(g);
+>>>>>>> e7e4ee53052ffe4a124a298cd0cf855a9385046e
 
         if( textArea.hasText() ){
             this.textArea.render(g);
@@ -171,10 +177,18 @@ public class PlayingGameState extends TransferableGameState {
         inventory.selectionListener(x, y);
 
 
-        Item itemClicked = sceneManager.onSceneClick(x, y);
+        ClickedObjects itemClicked = sceneManager.onSceneClick(x, y);
 
+        if (itemClicked.hasSceneObject()) {
+            System.out.println("Clicked: " + itemClicked.getSceneObject().getName());
+        }
+        else{
+            System.out.println("Clicked nothing");
+        }
+
+        
         if (itemClicked != null) {
-            inventory.addItem(itemClicked);
+            inventory.addItem(itemClicked.getItem());
         }
 
     }
@@ -194,7 +208,7 @@ public class PlayingGameState extends TransferableGameState {
     public void keyPressed(int key, char c) {
         System.out.println(Input.KEY_Q);
         if (key == Input.KEY_Q && !inventory.isEmpty()) {
-            System.out.println("sdfgasdfsd");
+
             inventory.dropSelectedItem();
         }
     }
