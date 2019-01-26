@@ -207,6 +207,7 @@ public class PlayingGameState extends TransferableGameState {
                 }
                 isTextArea = true;
             }
+
         } else {
             System.out.println("Clicked nothing");
         }
