@@ -27,6 +27,7 @@ public class PlayingGameState extends TransferableGameState {
 
     Item key;
     Item phone;
+    Item tyre;
 
     private Language language;
 
@@ -47,7 +48,7 @@ public class PlayingGameState extends TransferableGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
+        //imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
 
 
 
@@ -72,14 +73,19 @@ public class PlayingGameState extends TransferableGameState {
         inventory = new Inventory(barX, barY, 135,player);
 
 
-        inventory.addItem(key);
+        //inventory.addItem(key);
 
         //items
         key = new Item("Key", new Image("Assets/Sprites/key.png"));
         phone = new Item("Phone", new Image("Assets/Sprites/phone.png"));
+        tyre = new Item("Tyre",new Image("Assets/Sprites/tyre.png"));
+
+
 
         inventory.addItem(key);
         inventory.addItem(phone);
+        inventory.addItem(tyre);
+
     }
 
     @Override
@@ -115,6 +121,8 @@ public class PlayingGameState extends TransferableGameState {
 
         inventory.render();
 
+
+
     }
 
     @Override
@@ -139,7 +147,13 @@ public class PlayingGameState extends TransferableGameState {
 
         inventory.selectionListener(x, y);
 
-        sceneManager.onSceneClick(x, y);
+
+        Item itemClicked = sceneManager.onSceneClick(x, y);
+
+        if (itemClicked != null) {
+            inventory.addItem(itemClicked);
+        }
+
     }
 
     @Override
