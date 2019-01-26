@@ -89,14 +89,14 @@ public class PlayingGameState extends TransferableGameState {
         tyre = new Item("Tyre", new Image("Assets/Sprites/tyre.png"));
         tyreIron = new Item("Tyre Iron", new Image("Assets/Sprites/tyreiron.png"));
 
-
+/*
         inventory.addItem(key);
         inventory.addItem(phone);
         inventory.addItem(tyre);
         inventory.addItem(tyreIron);
         inventory.addItem(tyreIron);
         inventory.addItem(tyreIron);
-
+*/
 
         this.textArea = new TextArea();
         this.textArea.setText(language.getString("S1_KNOCK"));
@@ -114,6 +114,7 @@ public class PlayingGameState extends TransferableGameState {
     }
 
     boolean isTextArea = true;
+    boolean isTextAreaOption = false;
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -174,6 +175,7 @@ public class PlayingGameState extends TransferableGameState {
         //first text area
         if (x > 1450 && x < 1500 && y > 500 && y < 540) {
             isTextArea = false;
+            isTextAreaOption=false;
         }
 
 
@@ -188,7 +190,20 @@ public class PlayingGameState extends TransferableGameState {
         if (itemClicked.hasSceneObject()) {
             System.out.println("Clicked: " + itemClicked.getSceneObject().getName());
             if (itemClicked.getSceneObject().getName().equals("door")) {
-                this.textArea.setText(String.format("%s %s %s A",language.getString("S6_DOOR_2"),language.getString("S6_DOOR_2"),language.getString("S1_PRESS")));
+
+                if(true) {
+                    isTextAreaOption=true;
+                    this.textArea.setText(String.format("%s %s %s A \n %s %s %s S",
+                            language.getString("S1_FOR"),
+                            language.getString("S6_DOOR_2"),
+                            language.getString("S1_PRESS"),
+                            language.getString("S1_FOR"),
+                            language.getString("S6_DOOR_2"),
+                            language.getString("S5_DOOR_1")
+                    ));
+                }else{
+                    this.textArea.setText(String.format("%s",language.getString("S1_NEEDKEY")));
+                }
                 isTextArea = true;
             }
         } else {
@@ -219,6 +234,12 @@ public class PlayingGameState extends TransferableGameState {
         if (key == Input.KEY_Q && !inventory.isEmpty()) {
 
             inventory.dropSelectedItem();
+        }
+
+        if(isTextAreaOption){
+            if(key==Input.KEY_A){
+                System.out.println("Working");
+            }
         }
     }
 
