@@ -36,14 +36,13 @@ public class Game extends BasicGame {
 
     Item key;
 
-<<<<<<< HEAD
     private Language language;
-=======
+
     public static boolean debug = false;
     private static final int DEBUG_BUTTON = Input.KEY_LSHIFT;
 
     private int mouseX, mouseY;
->>>>>>> 39b530bd7840466c5322aa3aff882dc787731900
+
 
     public Game() {
         super("A Slick2d game");
@@ -89,22 +88,17 @@ public class Game extends BasicGame {
 
         barManager.render();
 
-        if (Game.debug) {
-            g.setColor(Color.red);
-            g.drawString(String.format("Mouse at: x=%d,y=%d", mouseX, mouseY), 20, 20);
-
-<<<<<<< HEAD
         //say gelow
         g.setColor(Color.blue);
         g.drawString( " " +language.getString("Welcome"),600,600);
 
+        if (Game.debug) {
+            g.setColor(Color.red);
+            g.drawString(String.format("Mouse at: x=%d,y=%d", mouseX, mouseY), 20, 20);
 
-
-=======
             g.drawString(xScaled + " " + yScaled + " " + imgBar.getHeight(), 50, 50);
             g.drawString("Box clicked: " + clickedBox, 50, 70);
         }
->>>>>>> 39b530bd7840466c5322aa3aff882dc787731900
     }
 
     @Override
