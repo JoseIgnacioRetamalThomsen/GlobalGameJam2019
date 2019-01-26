@@ -40,6 +40,8 @@ public class ItemBarManager {
      */
     public boolean removeItem(int slot){
 
+        if(items.remove(slot)!= null) return true;
+
         return false;
     }
     /**
@@ -53,8 +55,9 @@ public class ItemBarManager {
 
         for (int i = 1; i <= 6; i++) {
             if (items.get(i) == null) {
-                items.put(i, item);
 
+                items.put(i, item);
+                break;
             }
 
         }

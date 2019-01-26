@@ -53,6 +53,7 @@ public class Game extends BasicGame {
     @Override
     public void update(GameContainer container, int delta) throws SlickException {
 
+
     }
 
 
@@ -65,14 +66,9 @@ public class Game extends BasicGame {
 
         barManager.render();
 
-        barManager.addItem(key);
-        barManager.addItem(key);
-        barManager.addItem(key);
-        barManager.addItem(key);
-        barManager.addItem(key);
-        barManager.addItem(key);
-        barManager.addItem(key);
-        barManager.addItem(key);
+
+
+
 
     }
 
@@ -94,6 +90,11 @@ public class Game extends BasicGame {
 
         clickedBox = barManager.getSlot(x, y);
 
+        System.out.println( barManager.addItem(key));
+
+        if(barManager.getSlot(x, y)==1){
+            System.out.println( barManager.removeItem(1));
+        }
     }
 
     @Override
