@@ -1,6 +1,10 @@
 package davidneilan.com;
 
+import davidneilan.com.inter.English;
+import davidneilan.com.inter.Language;
+import davidneilan.com.inter.Spanish;
 import org.newdawn.slick.*;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
@@ -31,6 +35,8 @@ public class Game extends BasicGame {
 
     Item key;
 
+    private Language language;
+
     public Game() {
         super("A Slick2d game");
     }
@@ -47,6 +53,18 @@ public class Game extends BasicGame {
 
         sceneManager = new SceneManager();
         sceneManager.init();
+
+
+        String lan = "es";
+        switch(lan){
+            case "en":
+                language = new English();
+                break;
+            case "es":
+                language = new Spanish();
+                break;
+
+        }
 
     }
 
@@ -67,6 +85,9 @@ public class Game extends BasicGame {
         barManager.render();
 
 
+        //say gelow
+        g.setColor(Color.blue);
+        g.drawString( " " +language.getString("Welcome"),600,600);
 
 
 
@@ -107,6 +128,9 @@ public class Game extends BasicGame {
     static Dimension screenSize;
 
     public static void main(String[] args) throws SlickException {
+
+
+
         AppGameContainer app = new AppGameContainer(new ScalableGame(new Game(), WIDTH, HEIGHT, false));
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
