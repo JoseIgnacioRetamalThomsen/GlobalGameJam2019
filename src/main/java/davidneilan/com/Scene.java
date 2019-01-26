@@ -32,7 +32,7 @@ public class Scene {
         background.draw();
 
         for (SceneObject obj : sceneObjects) {
-            obj.getSprite().draw();
+            obj.render();
         }
     }
 }
