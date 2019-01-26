@@ -23,6 +23,7 @@ public class PlayingGameState extends TransferableGameState {
     private SceneManager sceneManager;
 
     Item key;
+    Item phone;
 
     private Language language;
 
@@ -46,15 +47,21 @@ public class PlayingGameState extends TransferableGameState {
         imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
         barManager = new ItemBarManager(barX, barY, imgBar.getHeight());
 
+        barManager.addItem(key);
+
         //items
         key = new Item("Key", new Image("Assets/Sprites/key.png"));
+        phone = new Item("Phone", new Image("Assets/Sprites/phone.png"));
+
+        barManager.addItem(key);
+        barManager.addItem(phone);
 
         sceneManager = new SceneManager();
         sceneManager.init();
 
 
         String lan = "es";
-        switch(lan){
+        switch (lan) {
             case "en":
                 language = new English();
                 break;
@@ -81,7 +88,7 @@ public class PlayingGameState extends TransferableGameState {
 
         //say gelow
         g.setColor(Color.blue);
-        g.drawString( " " +language.getString("Welcome"),600,600);
+        g.drawString(" " + language.getString("Welcome"), 600, 600);
 
         if (PlayingGameState.debug) {
             g.setColor(Color.red);
@@ -111,11 +118,8 @@ public class PlayingGameState extends TransferableGameState {
 
         clickedBox = barManager.getSlot(x, y);
 
-        System.out.println( barManager.addItem(key));
 
-        if(barManager.getSlot(x, y)==1){
-            System.out.println( barManager.removeItem(1));
-        }
+        barManager.selectionListener(x, y);
 
         sceneManager.onSceneClick(x, y);
     }
