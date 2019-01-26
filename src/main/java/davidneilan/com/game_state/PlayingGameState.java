@@ -163,6 +163,7 @@ public class PlayingGameState extends TransferableGameState {
 
         Item itemClicked = sceneManager.onSceneClick(x, y);
 
+        
         if (itemClicked != null) {
             inventory.addItem(itemClicked);
         }
