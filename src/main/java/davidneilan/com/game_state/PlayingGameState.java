@@ -1,5 +1,8 @@
-package davidneilan.com;
+package davidneilan.com.game_state;
 
+import davidneilan.com.Item;
+import davidneilan.com.ItemBarManager;
+import davidneilan.com.SceneManager;
 import davidneilan.com.inter.English;
 import davidneilan.com.inter.Language;
 import davidneilan.com.inter.Spanish;
@@ -7,24 +10,9 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.state.StateBasedGame;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-
-/**
- * A game using Slick2d
- */
-public class Game extends BasicGame {
-    /**
-     * Screen width
-     */
-    private static final int WIDTH = 1920;
-    /**
-     * Screen height
-     */
-    private static final int HEIGHT = 1080;
-
-
+public class PlayingGameState extends TransferableGameState {
     private int barX = 556, barY = 925;
 
     private Image imgBar;
@@ -44,14 +32,17 @@ public class Game extends BasicGame {
     private int mouseX, mouseY;
 
 
-    public Game() {
-        super("A Slick2d game");
+    public PlayingGameState(Game game) {
+        super(game);
     }
 
     @Override
-    public void init(GameContainer container) throws SlickException {
+    public int getID() {
+        return 0;
+    }
 
-
+    @Override
+    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         imgBar = new Image("res/sprites/ItemBarBackground.png");
         barManager = new ItemBarManager(barX, barY, imgBar.getHeight());
 
@@ -76,13 +67,13 @@ public class Game extends BasicGame {
     }
 
     @Override
-    public void update(GameContainer gc, int delta) throws SlickException {
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         Input input = gc.getInput();
         debug = input.isKeyDown(DEBUG_BUTTON);
     }
 
-
-    public void render(GameContainer container, Graphics g) throws SlickException {
+    @Override
+    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         // render current scene
         sceneManager.render(g);
 
@@ -92,7 +83,7 @@ public class Game extends BasicGame {
         g.setColor(Color.blue);
         g.drawString( " " +language.getString("Welcome"),600,600);
 
-        if (Game.debug) {
+        if (PlayingGameState.debug) {
             g.setColor(Color.red);
             g.drawString(String.format("Mouse at: x=%d,y=%d", mouseX, mouseY), 20, 20);
 
@@ -132,23 +123,6 @@ public class Game extends BasicGame {
     @Override
     public void mouseReleased(int button, int x, int y) {
 
-    }
-
-    static Dimension screenSize;
-
-    public static void main(String[] args) throws SlickException {
-
-
-
-        AppGameContainer app = new AppGameContainer(new ScalableGame(new Game(), WIDTH, HEIGHT, false));
-        screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-        app.setDisplayMode(screenSize.width, screenSize.height, true);
-        app.setForceExit(false);
-        app.setTargetFrameRate(60);
-        app.setMaximumLogicUpdateInterval(16);
-        app.setVSync(true);
-        app.start();
     }
 
 }
