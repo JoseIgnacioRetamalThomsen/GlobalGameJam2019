@@ -20,7 +20,7 @@ public class PlayingGameState extends TransferableGameState {
     public static int langaugeStatic;
     private int barX = 556, barY = 925;
 
-   // private Image imgBar;
+    // private Image imgBar;
     private Player player;
 
     Inventory inventory;
@@ -40,8 +40,6 @@ public class PlayingGameState extends TransferableGameState {
     private int mouseX, mouseY;
 
 
-
-
     public PlayingGameState(Game game) {
         super(game);
     }
@@ -54,8 +52,6 @@ public class PlayingGameState extends TransferableGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         //imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
-
-
 
 
         sceneManager = new SceneManager();
@@ -78,7 +74,7 @@ public class PlayingGameState extends TransferableGameState {
 */
         // create player
         this.player = new Player(HeroAnimation.getAnimation(), Position.of(900, 900), 1000);
-        inventory = new Inventory(barX, barY, 135,player);
+        inventory = new Inventory(barX, barY, 135, player);
 
 
         //inventory.addItem(key);
@@ -86,7 +82,7 @@ public class PlayingGameState extends TransferableGameState {
         //items
         key = new Item("Key", new Image("Assets/Sprites/key.png"));
         phone = new Item("Phone", new Image("Assets/Sprites/phone.png"));
-        tyre = new Item("Tyre",new Image("Assets/Sprites/tyre.png"));
+        tyre = new Item("Tyre", new Image("Assets/Sprites/tyre.png"));
         tyreIron = new Item("Tyre Iron", new Image("Assets/Sprites/tyreiron.png"));
 
 
@@ -98,10 +94,6 @@ public class PlayingGameState extends TransferableGameState {
         inventory.addItem(tyreIron);
 
 
-
-
-
-
     }
 
     @Override
@@ -109,7 +101,8 @@ public class PlayingGameState extends TransferableGameState {
         Input input = gc.getInput();
         debug = input.isKeyDown(DEBUG_BUTTON);
 
-        this.player.moveTo(Position.of(x1, y1));
+        if (x1 > 400 && x1 < 1620 && y1 > 430 && y1 < 970)
+            this.player.moveTo(Position.of(x1, y1));
         this.player.update();
     }
 
@@ -182,9 +175,9 @@ public class PlayingGameState extends TransferableGameState {
     }
 
     @Override
-    public void keyPressed(int key, char c){
+    public void keyPressed(int key, char c) {
         System.out.println(Input.KEY_Q);
-        if(key==Input.KEY_Q && !inventory.isEmpty()){
+        if (key == Input.KEY_Q && !inventory.isEmpty()) {
             System.out.println("sdfgasdfsd");
             inventory.dropSelectedItem();
         }
