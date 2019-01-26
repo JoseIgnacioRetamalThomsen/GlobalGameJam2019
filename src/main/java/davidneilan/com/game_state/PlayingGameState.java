@@ -1,5 +1,6 @@
 package davidneilan.com.game_state;
 
+import davidneilan.com.ClickedObjects;
 import davidneilan.com.Item;
 import davidneilan.com.Inventory;
 import davidneilan.com.PlayersStuff.HeroAnimation;
@@ -168,11 +169,18 @@ public class PlayingGameState extends TransferableGameState {
         inventory.selectionListener(x, y);
 
 
-        Item itemClicked = sceneManager.onSceneClick(x, y);
+        ClickedObjects itemClicked = sceneManager.onSceneClick(x, y);
+
+        if (itemClicked.hasSceneObject()) {
+            System.out.println("Clicked: " + itemClicked.getSceneObject().getName());
+        }
+        else{
+            System.out.println("Clicked nothing");
+        }
 
         
         if (itemClicked != null) {
-            inventory.addItem(itemClicked);
+            inventory.addItem(itemClicked.getItem());
         }
 
     }
