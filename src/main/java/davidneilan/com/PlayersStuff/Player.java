@@ -44,6 +44,10 @@ public class Player {
         this.money += amount;
     }
 
+    public boolean searchItem(String name){
+        return inventory.stream().anyMatch(item -> item.getName().equals(name));
+    }
+
     /**
      * Takes given amount of money from players balance.
      *
