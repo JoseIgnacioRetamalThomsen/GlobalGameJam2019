@@ -205,7 +205,7 @@ public class PlayingGameState extends TransferableGameState {
                 }
                 isTextArea = true;
             }
-<<<<<<< HEAD
+
             else if( itemClicked.getSceneObject().getName().equals("window") ){
 
                 isTextAreaOption=true;
@@ -220,8 +220,7 @@ public class PlayingGameState extends TransferableGameState {
 
                 isTextArea = true;
             }
-=======
->>>>>>> 1a3278dd410c31fc56344fe1bf090bec47e33be8
+
 
         } else {
             System.out.println("Clicked nothing");
