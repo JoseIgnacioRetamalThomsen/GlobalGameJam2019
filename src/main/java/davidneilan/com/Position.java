@@ -65,7 +65,10 @@ public class Position implements Comparable<Position>{
     @Override
     public boolean equals(Object obj){
         if( obj instanceof Position ){
-            return x == ((Position)obj).getX() && y == ((Position)obj).getY();
+            Position p = (Position)obj;
+            boolean xb = (int)x == (int)p.getX();
+            boolean yb = (int)y == (int)p.getY();
+            return  xb && yb;
         }
         return false;
     }
