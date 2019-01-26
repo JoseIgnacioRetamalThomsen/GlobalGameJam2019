@@ -8,8 +8,11 @@ import java.util.List;
 
 public class Player {
     private static final int MAX_ITEMS = 6;
+    private static final int OFFSET_X = 100;
+    private static final int OFFSET_Y = -400;
 
     private List<Item> inventory;
+   // private Inventory invetory;
     private Animation animation;
     private MovementComponent movementComponent;
     private int money;
@@ -91,8 +94,12 @@ public class Player {
     }
 
     public void render(){
-
+        Position pos = this.getPosition();
+        animation.draw(pos.getX() +Player.OFFSET_X, pos.getY() +Player.OFFSET_Y);
     }
 
 
+    public void moveTo(Position of) {
+        
+    }
 }
