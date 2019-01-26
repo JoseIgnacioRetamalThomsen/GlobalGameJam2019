@@ -46,6 +46,10 @@ public class SceneManager {
         sceneBg = new Image("Assets/Backgrounds/Street1.png");
         objMap = new Image("Assets/Sprites/street-object-map.png");
         sceneObjs = new ArrayList<>();
+        anim = new Animation();
+        anim.addFrame(new Image("Assets/Sprites/scene-1-door.png"), 1);
+        sceneObj = new SceneObject("pawn door", Color.red, anim);
+        sceneObjs.add(sceneObj);
         scenes[1] = new Scene(sceneBg, objMap, sceneObjs);
     }
 
