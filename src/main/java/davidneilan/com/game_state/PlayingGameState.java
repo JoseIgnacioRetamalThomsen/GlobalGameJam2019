@@ -97,13 +97,10 @@ public class PlayingGameState extends TransferableGameState {
         inventory.addItem(tyreIron);
         inventory.addItem(tyreIron);
 
-        // initialize text area
-<<<<<<< HEAD
+
         this.textArea = new TextArea();
         this.textArea.setText(language.getString("S1_KNOCK"));
-=======
-//        this.textArea.setText(language.getString("S0_GREET"));
->>>>>>> d29910d2f546e7cc56630c198b56ee1957002779
+
     }
 
     @Override
@@ -147,24 +144,14 @@ public class PlayingGameState extends TransferableGameState {
         inventory.render(g);
         //show dialog
 
-<<<<<<< HEAD
+
         if (isTextArea) {
             // Show text area
-
-=======
-        // Show text area
-<<<<<<< HEAD
-
-        this.textArea.setText(language.getString("S0_GREET"));
-=======
-        this.textArea.setText(language.getString("S1_KNOCK"));
-        this.textArea.render(g);
->>>>>>> e7e4ee53052ffe4a124a298cd0cf855a9385046e
-
-        if( textArea.hasText() ){
->>>>>>> d29910d2f546e7cc56630c198b56ee1957002779
-            this.textArea.render(g);
+            textArea.render(g);
         }
+
+
+
     }
 
     @Override
