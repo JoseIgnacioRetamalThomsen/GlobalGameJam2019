@@ -1,6 +1,7 @@
 package davidneilan.com;
 
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -28,11 +29,11 @@ public class Scene {
         }
     }
 
-    public void render() throws SlickException {
+    public void render(Graphics g) throws SlickException {
         background.draw();
 
         for (SceneObject obj : sceneObjects) {
-            obj.render();
+            obj.render(g);
         }
     }
 }

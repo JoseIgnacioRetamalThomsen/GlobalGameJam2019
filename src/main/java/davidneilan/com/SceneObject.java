@@ -2,6 +2,7 @@ package davidneilan.com;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class SceneObject {
         itemPosList = new ArrayList<>();
     }
 
-    private void setItemShowingFrame(int frame) {
+    public void setItemShowingFrame(int frame) {
         itemShowingFrame = frame;
     }
 
@@ -39,12 +40,20 @@ public class SceneObject {
         anim.setCurrentFrame((anim.getFrame() + 1) % anim.getFrameCount());
     }
 
-    public void render() {
+    public void render(Graphics g) {
         anim.getCurrentFrame().draw();
 
         if (anim.getFrame() == itemShowingFrame && items.size() > 0) {
             // render items
-
+            for (int i = 0; i < items.size(); i++) {
+                Item item = items.get(i);
+                ItemScreenPosition pos = itemPosList.get(i);
+                g.drawImage(item.getIcon(),
+                        pos.getX(), pos.getY(),
+                        pos.getX() + pos.getDrawSize(),pos.getY() + pos.getDrawSize(),
+                        pos.getDrawSize(), pos.getDrawSize(),
+                        pos.getDrawSize(), pos.getDrawSize());
+            }
         }
     }
 

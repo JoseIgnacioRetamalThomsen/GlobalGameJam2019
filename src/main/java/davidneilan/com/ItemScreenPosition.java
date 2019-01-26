@@ -3,12 +3,12 @@ package davidneilan.com;
 public class ItemScreenPosition {
     private int x;
     private int y;
-    private float scale;
+    private int drawSize;
 
-    public ItemScreenPosition(int x, int y, float scale) {
+    public ItemScreenPosition(int x, int y, int drawSize) {
         this.x = x;
         this.y = y;
-        this.scale = scale;
+        this.drawSize = drawSize;
     }
 
     public int getX() {
@@ -19,8 +19,8 @@ public class ItemScreenPosition {
         return y;
     }
 
-    public float getScale() {
-        return scale;
+    public float getDrawSize() {
+        return drawSize;
     }
 
 }

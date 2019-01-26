@@ -66,7 +66,7 @@ public class Game extends BasicGame {
 
     public void render(GameContainer container, Graphics g) throws SlickException {
         // render current scene
-        sceneManager.render();
+        sceneManager.render(g);
 
         barManager.render();
 

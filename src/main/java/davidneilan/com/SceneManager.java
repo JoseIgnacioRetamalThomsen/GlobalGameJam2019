@@ -1,9 +1,6 @@
 package davidneilan.com;
 
-import org.newdawn.slick.Animation;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -33,14 +30,17 @@ public class SceneManager {
         Animation anim = new Animation(objFrames, 1);
         anim.setAutoUpdate(false);
         sceneObj = new SceneObject(Color.red, anim);
+        sceneObj.addTakableItem(new Item("Key", new Image("res/sprites/key.png")),
+                new ItemScreenPosition(1533, 549, 20));
+        sceneObj.setItemShowingFrame(1);
         sceneObjs.add(sceneObj);
         sceneBg = new Image("/res/sprites/BasicRoom.png");
         objMap = new Image("/res/sprites/scene1-object-map.png");
         scenes[0] = new Scene(sceneBg, objMap, sceneObjs);
     }
 
-    public void render() throws SlickException {
-        scenes[currentScene].render();
+    public void render(Graphics g) throws SlickException {
+        scenes[currentScene].render(g);
     }
 
     public void onSceneClick(int clickX, int clickY) {
