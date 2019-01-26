@@ -127,14 +127,8 @@ public class PlayingGameState extends TransferableGameState {
 
         // render player movement
         this.player.render();
-<<<<<<< HEAD
-=======
-        this.player.moveTo(Position.of(mouseX, mouseY));
 
         inventory.render();
-
-
->>>>>>> 448e82eb9a5f8f11ff21aa687790c0261241a5f8
 
     }
 
