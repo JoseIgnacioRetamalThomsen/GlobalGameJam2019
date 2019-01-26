@@ -37,7 +37,7 @@ public class Game extends BasicGame {
     @Override
     public void init(GameContainer container) throws SlickException {
 
-       
+
         imgBar = new Image("res/sprites/ItemBarBackground.png");
         barManager = new ItemBarManager(barX, barY, imgBar.getHeight());
 
@@ -59,6 +59,14 @@ public class Game extends BasicGame {
         g.drawString("Box clicked: " + clickedBox, 50, 70);
 
         barManager.render();
+
+        barManager.addItem(key);
+        barManager.addItem(key);
+        barManager.addItem(key);
+        barManager.addItem(key);
+        barManager.addItem(key);
+        barManager.addItem(key);
+        barManager.addItem(key);
         barManager.addItem(key);
 
     }
