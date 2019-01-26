@@ -24,8 +24,11 @@ public class Game extends BasicGame {
 
     private Image imgBar;
 
+
     ItemBarManager barManager;
 
+
+    Item key;
 
     public Game() {
         super("A Slick2d game");
@@ -34,8 +37,12 @@ public class Game extends BasicGame {
     @Override
     public void init(GameContainer container) throws SlickException {
 
+       
         imgBar = new Image("res/sprites/ItemBarBackground.png");
-        barManager = new ItemBarManager(barX,barY,imgBar.getHeight());
+        barManager = new ItemBarManager(barX, barY, imgBar.getHeight());
+
+        //items
+        key = new Item("Key", new Image("res/sprites/key.png"));
 
     }
 
@@ -45,12 +52,14 @@ public class Game extends BasicGame {
     }
 
 
-
     public void render(GameContainer container, Graphics g) throws SlickException {
-        imgBar.draw(barX, barY);
-        g.drawString(xScaled + " " + yScaled + " " + imgBar.getHeight(), 50, 50);
-        g.drawString("Box clicked: " + clickedBox , 50 , 70);
 
+
+        g.drawString(xScaled + " " + yScaled + " " + imgBar.getHeight(), 50, 50);
+        g.drawString("Box clicked: " + clickedBox, 50, 70);
+
+        barManager.render();
+        barManager.addItem(key);
 
     }
 
@@ -70,7 +79,7 @@ public class Game extends BasicGame {
         x1 = x;
         y1 = y;
 
-       clickedBox =  barManager.getSlot(x,y);
+        clickedBox = barManager.getSlot(x, y);
 
     }
 
@@ -85,7 +94,7 @@ public class Game extends BasicGame {
         AppGameContainer app = new AppGameContainer(new ScalableGame(new Game(), WIDTH, HEIGHT, false));
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-        app.setDisplayMode(screenSize.width, screenSize.height, false);
+        app.setDisplayMode(screenSize.width, screenSize.height, true);
         app.setForceExit(false);
         app.setTargetFrameRate(60);
         app.setMaximumLogicUpdateInterval(16);
