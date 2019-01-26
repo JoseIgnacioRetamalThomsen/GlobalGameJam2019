@@ -55,7 +55,7 @@ public class PlayingGameState extends TransferableGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        //imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
+
 
 
         sceneManager = new SceneManager();
@@ -191,7 +191,8 @@ public class PlayingGameState extends TransferableGameState {
             System.out.println("Clicked: " + itemClicked.getSceneObject().getName());
             if (itemClicked.getSceneObject().getName().equals("door")) {
 
-                if(true) {
+                System.out.println("has key " + player.searchItem("Key"));
+                if(inventory.hasItem("Key")) {
                     isTextAreaOption=true;
                     this.textArea.setText(String.format("%s %s %s A \n %s %s %s S",
                             language.getString("S1_FOR"),
@@ -212,6 +213,7 @@ public class PlayingGameState extends TransferableGameState {
 
 
         if (itemClicked != null) {
+
             inventory.addItem(itemClicked.getItem());
         }
 

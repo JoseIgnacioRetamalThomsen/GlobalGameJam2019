@@ -106,6 +106,16 @@ public class Inventory {
         return true;
     }
 
+    public boolean hasItem(String itemName){
+        for (Item items : items.values()) {
+            if(items !=null) {
+                if (items.getName().equals(itemName)) return true;
+
+                System.out.println(items.getName());
+            }
+        }
+        return false;
+    }
     /**
      * Return the clicked box number from 1 to 6 , minus 1 if is not insede
      *
