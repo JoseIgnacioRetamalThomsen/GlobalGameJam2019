@@ -12,7 +12,7 @@ public class HeroAnimation {
 
     private HeroAnimation() throws SlickException {
         this.images  = new Image[]{
-                new Image("Assets/Sprites/BasicPlayer1.png")
+                new Image("Assets/Sprites/BasicPlayer2.png")
         };
 
         this.animation = new Animation(images, 2);

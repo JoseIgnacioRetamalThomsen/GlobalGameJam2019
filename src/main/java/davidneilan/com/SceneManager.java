@@ -25,16 +25,18 @@ public class SceneManager {
         // init scene 1
         sceneObjs = new ArrayList<SceneObject>();
         objFrames = new Image[2];
-        objFrames[0] = new Image("Assets/Sprites/drawers.png");
-        objFrames[1] = new Image("Assets/Sprites/drawers-open.png");
-        Animation anim = new Animation(objFrames, 1);
-        anim.setAutoUpdate(false);
-        sceneObj = new SceneObject(Color.red, anim);
-        sceneObj.addTakableItem(new Item("Key", new Image("Assets/Sprites/key.png")),
-                new ItemScreenPosition(1533, 549, 20));
-        sceneObj.setItemShowingFrame(1);
-        sceneObjs.add(sceneObj);
-        sceneBg = new Image("Assets/Sprites/BasicRoom.png");
+
+        //Animation anim = new Animation(new Image[]{
+        //        new Image("Assets/Sprites/drawers.png"),
+        //        new Image("Assets/Sprites/drawers-open.png")
+        //}, -1);
+        //sceneObj = new SceneObject(Color.red, anim);
+//
+        //sceneObj.addTakableItem(new Item("Key", new Image("Assets/Sprites/key.png")),
+        //        new ItemScreenPosition(1533, 549, 20));
+        //sceneObj.setItemShowingFrame(1);
+        sceneObjs.add(new TV());
+        sceneBg = new Image("Assets/Backgrounds/Apartment.png");
         objMap = new Image("Assets/Sprites/scene1-object-map.png");
         scenes[0] = new Scene(sceneBg, objMap, sceneObjs);
     }
@@ -43,7 +45,7 @@ public class SceneManager {
         scenes[currentScene].render(g);
     }
 
-    public Item onSceneClick(int clickX, int clickY) {
-        return scenes[currentScene].onSceneClick(clickX, clickY);
+    public void onSceneClick(int clickX, int clickY) {
+        scenes[currentScene].onSceneClick(clickX, clickY);
     }
 }
