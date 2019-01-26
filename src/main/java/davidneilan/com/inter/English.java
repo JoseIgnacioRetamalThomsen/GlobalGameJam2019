@@ -9,6 +9,8 @@ public class English implements Language {
 
     public English() {
         strings.put("S0_GREET", "HELLO");
+        strings.put("S1_FOR","FOR");
+        strings.put("S1_PRESS","PRESS");
         strings.put("S1_KNOCK", "KONCK KNOCK");
         strings.put("S2_WIN_1","CHECK THE WINDOW");
         strings.put("S3_WIN_2","OPEN THE WINDOW");

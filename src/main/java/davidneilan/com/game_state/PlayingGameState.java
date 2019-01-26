@@ -25,7 +25,7 @@ public class PlayingGameState extends TransferableGameState {
     // private Image imgBar;
     private Player player;
 
-    private TextArea textArea;
+    private TextArea textArea = new TextArea();
 
     Inventory inventory;
 
@@ -36,7 +36,7 @@ public class PlayingGameState extends TransferableGameState {
     Item tyre;
     Item tyreIron;
 
-    public static Language language;
+    public static Language language = new English();
 
     public static boolean debug = false;
     private static final int DEBUG_BUTTON = Input.KEY_LSHIFT;
@@ -99,6 +99,7 @@ public class PlayingGameState extends TransferableGameState {
 
         // initialize text area
         this.textArea = new TextArea();
+        this.textArea.setText(language.getString("S1_KNOCK"));
     }
 
     @Override
@@ -110,6 +111,8 @@ public class PlayingGameState extends TransferableGameState {
             this.player.moveTo(Position.of(x1, y1));
         this.player.update();
     }
+
+    boolean isTextArea = true;
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -140,10 +143,11 @@ public class PlayingGameState extends TransferableGameState {
         inventory.render(g);
         //show dialog
 
-        // Show text area
-        this.textArea.setText(language.getString("S1_KNOCK"));
-        this.textArea.render(g);
+        if (isTextArea) {
+            // Show text area
 
+            this.textArea.render(g);
+        }
     }
 
     @Override
@@ -163,6 +167,12 @@ public class PlayingGameState extends TransferableGameState {
         x1 = x;
         y1 = y;
 
+        //first text area
+        if (x > 1450 && x < 1500 && y > 500 && y < 540) {
+            isTextArea = false;
+        }
+
+
         clickedBox = inventory.getSlot(x, y);
 
 
@@ -173,12 +183,15 @@ public class PlayingGameState extends TransferableGameState {
 
         if (itemClicked.hasSceneObject()) {
             System.out.println("Clicked: " + itemClicked.getSceneObject().getName());
-        }
-        else{
+            if (itemClicked.getSceneObject().getName().equals("door")) {
+                this.textArea.setText(String.format("%s %s %s A",language.getString("S6_DOOR_2"),language.getString("S6_DOOR_2"),language.getString("S1_PRESS")));
+                isTextArea = true;
+            }
+        } else {
             System.out.println("Clicked nothing");
         }
 
-        
+
         if (itemClicked != null) {
             inventory.addItem(itemClicked.getItem());
         }
