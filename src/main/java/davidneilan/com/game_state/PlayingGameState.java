@@ -2,6 +2,9 @@ package davidneilan.com.game_state;
 
 import davidneilan.com.Item;
 import davidneilan.com.ItemBarManager;
+import davidneilan.com.PlayersStuff.HeroAnimation;
+import davidneilan.com.PlayersStuff.Player;
+import davidneilan.com.PlayersStuff.Position;
 import davidneilan.com.SceneManager;
 import davidneilan.com.inter.English;
 import davidneilan.com.inter.Language;
@@ -16,7 +19,7 @@ public class PlayingGameState extends TransferableGameState {
     private int barX = 556, barY = 925;
 
     private Image imgBar;
-
+    private Player player;
 
     ItemBarManager barManager;
 
@@ -71,6 +74,9 @@ public class PlayingGameState extends TransferableGameState {
 
         }
 
+        // create player
+        this.player = new Player(HeroAnimation.getAnimation(), Position.of(900, 900), 1000);
+
     }
 
     @Override
@@ -97,6 +103,10 @@ public class PlayingGameState extends TransferableGameState {
             g.drawString(xScaled + " " + yScaled + " " + imgBar.getHeight(), 50, 50);
             g.drawString("Box clicked: " + clickedBox, 50, 70);
         }
+
+        // render player movement
+        this.player.render();
+        this.player.moveTo(Position.of(mouseX, mouseY));
     }
 
     @Override

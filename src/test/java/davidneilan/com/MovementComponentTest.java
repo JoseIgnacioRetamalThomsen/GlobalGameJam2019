@@ -11,9 +11,9 @@ class MovementComponentTest {
     @Test
 //    @DisplayName("Testing: MovementComponent.isMoving()")
     void isMoving() {
-        Position p1 = Position.of(2.0, 2.0);
-        Position p2 = Position.of(3.5, 4.2);
-        Position p3 = Position.of(2.4, 2.7);
+        Position p1 = Position.of(2.0f, 2.0f);
+        Position p2 = Position.of(3.5f, 4.2f);
+        Position p3 = Position.of(2.4f, 2.7f);
 
         MovementComponent mc1 = new MovementComponent(p1);
 
