@@ -49,15 +49,15 @@ public class Inventory {
         this.cash = newCash;
     }
 
-    public void addCash(int cashToAdd){
+    public void addCash(int cashToAdd) {
         this.cash += cashToAdd;
     }
 
-    public boolean getCash(int cashToGet){
-        if(this.cash<cashToGet){
+    public boolean getCash(int cashToGet) {
+        if (this.cash < cashToGet) {
             return false;
         }
-        this.cash-= cashToGet;
+        this.cash -= cashToGet;
         return true;
     }
 
@@ -86,7 +86,12 @@ public class Inventory {
      * @return false if inventory is full
      */
     public boolean addItem(Item item) {
-        if (items.size() == 6) return false;
+        int count = 0;
+        for (Item items : items.values()) {
+            if (items != null)
+                count++;
+        }
+        if (count >= 6) return false;
 
         for (int i = 1; i <= 6; i++) {
             if (items.get(i) == null) {
