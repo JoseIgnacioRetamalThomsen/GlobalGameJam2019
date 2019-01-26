@@ -2,7 +2,6 @@ package davidneilan.com.game_state.menu;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 
 /**
  * A set of MenuButtons, for use in a menu.
@@ -23,7 +22,6 @@ public final class ButtonSet {
                      int buttonHeight,
                      Color buttonColor,
                      Color buttonHoverColor,
-                     Image[] images,
                      int spacing) {
         this.startX = startX;
         this.startY = startY;
@@ -39,8 +37,7 @@ public final class ButtonSet {
                     buttonHeight,
                     buttonColor,
                     buttonHoverColor,
-                    buttonTexts[i],
-                    images[i]);
+                    buttonTexts[i]);
             startY += buttonHeight + spacing;
         }
     }

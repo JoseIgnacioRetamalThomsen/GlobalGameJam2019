@@ -16,12 +16,7 @@ public abstract class TransferableGameState extends BasicGameState {
         this.sbg = sbg;
     }
 
-
     protected void enterState(int id) {
-        sbg.enterState(id);
-    }
-
-    protected void enterState(int id,int language) {
         sbg.enterState(id);
     }
 

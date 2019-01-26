@@ -24,6 +24,7 @@ public class Scene {
 
         for (SceneObject obj: sceneObjects) {
             if (obj instanceof Clickable) {
+                System.out.println(obj);
                 ((Clickable) obj).onClick();
                 return;
             }

@@ -10,7 +10,7 @@ public class Position implements Comparable<Position>{
     /**
      * x & y Coordinates of position
      */
-    private double x, y;
+    private float x, y;
 
     /**
      * Constructs position with given coordinates
@@ -18,7 +18,7 @@ public class Position implements Comparable<Position>{
      * @param x coordinates of position
      * @param y coordinates of position
      */
-    public Position(double x, double y) {
+    public Position(float x, float y) {
         this.x = x;
         this.y = y;
     }
@@ -30,8 +30,7 @@ public class Position implements Comparable<Position>{
      * @param y coordinates of position
      * @return newly created object
      */
-    public static Position of(double x, double y){ return new Position(x, y); }
-    public static Position of(int x, int y){ return new Position(x, y); }
+    public static Position of(float x, float y){ return new Position(x, y); }
 
     /**
      * Factory method creates position from a given position (deep copy)
@@ -41,17 +40,10 @@ public class Position implements Comparable<Position>{
     public static Position of(Position pos){ return new Position(pos.getX(),  pos.getY()); }
 
     /** Get position X value */
-    public double getX() { return this.x; }
+    public float getX() { return this.x; }
 
     /** Get positions Y value */
-    public double getY() { return this.y; }
-
-    /** Update position */
-    public void update(Position offset){
-        this.x += offset.getX();
-        this.y += offset.getY();
-    }
-
+    public float getY() { return this.y; }
 
 
     /**
