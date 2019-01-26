@@ -13,7 +13,7 @@ public class SceneManager {
     private int currentScene;
 
     public void init() throws SlickException {
-        scenes = new Scene[1];
+        scenes = new Scene[2];
         currentScene = 0;
 
         List<SceneObject> sceneObjs;
@@ -41,6 +41,12 @@ public class SceneManager {
         sceneBg = new Image("Assets/Backgrounds/Apartment.png");
         objMap = new Image("Assets/Sprites/scene1-object-map.png");
         scenes[0] = new Scene(sceneBg, objMap, sceneObjs);
+
+        // init scene 2
+        sceneBg = new Image("Assets/Backgrounds/Street1.png");
+        objMap = new Image("Assets/Sprites/street-object-map.png");
+        sceneObjs = new ArrayList<>();
+        scenes[1] = new Scene(sceneBg, objMap, sceneObjs);
     }
 
     public void render(Graphics g) throws SlickException {
@@ -49,5 +55,9 @@ public class SceneManager {
 
     public ClickedObjects onSceneClick(int clickX, int clickY) {
         return scenes[currentScene].onSceneClick(clickX, clickY);
+    }
+
+    public void goToScene(int scene) {
+        currentScene = scene;
     }
 }
