@@ -1,6 +1,7 @@
 package davidneilan.com;
 
-import org.junit.jupiter.api.DisplayName;
+import davidneilan.com.PlayersStuff.MovementComponent;
+import davidneilan.com.PlayersStuff.Position;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

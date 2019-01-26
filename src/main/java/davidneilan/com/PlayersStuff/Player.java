@@ -89,5 +89,9 @@ public class Player {
         this.inventory.remove(index);
     }
 
+    public void render(){
+        
+    }
+
 
 }
