@@ -38,7 +38,7 @@ public class PlayingGameState extends TransferableGameState {
 
     @Override
     public int getID() {
-        return 0;
+        return 1;
     }
 
     @Override
