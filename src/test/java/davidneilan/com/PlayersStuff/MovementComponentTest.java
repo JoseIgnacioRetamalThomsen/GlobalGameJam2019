@@ -1,4 +1,4 @@
-package davidneilan.com;
+package davidneilan.com.PlayersStuff;
 
 import davidneilan.com.PlayersStuff.MovementComponent;
 import davidneilan.com.PlayersStuff.Position;
@@ -27,5 +27,11 @@ class MovementComponentTest {
                 () -> assertFalse(mc1.isMoving(),
                         "Should not move"+ String.format("Current: {%s}, Target: {%s}", mc1.getCurrentPos(), mc1.getTargetPos()))
         );
+    }
+
+    @Test
+    void move() {
+
+        MovementComponent mc;
     }
 }
