@@ -1,5 +1,6 @@
-package davidneilan.com;
+package davidneilan.com.PlayersStuff;
 
+import davidneilan.com.Item;
 import org.newdawn.slick.Animation;
 
 import java.util.ArrayList;
@@ -10,13 +11,13 @@ public class Player {
 
     private List<Item> inventory;
     private Animation animation;
-    private Position position;
+    private MovementComponent movementComponent;
     private int money;
 
     public Player(Animation animation, Position position, int money){
-        this.inventory = new ArrayList<Item>(Player.MAX_ITEMS);
+        this.inventory = new ArrayList<>(Player.MAX_ITEMS);
         this.animation = animation;
-        this.position = position;
+        this.movementComponent = new MovementComponent(position);
         this.money = money;
     }
 
@@ -29,7 +30,7 @@ public class Player {
     }
 
     public Position getPosition() {
-        return position;
+        return this.movementComponent.getCurrentPos();
     }
 
     public int getMoney() {
@@ -87,6 +88,10 @@ public class Player {
     public void dropItem(int index){
         if( this.inventory.size() < index +1 ){ return; }
         this.inventory.remove(index);
+    }
+
+    public void render(){
+
     }
 
 

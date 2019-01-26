@@ -1,4 +1,6 @@
-package davidneilan.com;
+package davidneilan.com.PlayersStuff;
+
+import davidneilan.com.PlayersStuff.Position;
 
 public class MovementComponent {
     private Position currentPos;
