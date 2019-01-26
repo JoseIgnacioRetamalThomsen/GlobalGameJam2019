@@ -2,6 +2,9 @@ package davidneilan.com.game_state;
 
 import davidneilan.com.Item;
 import davidneilan.com.ItemBarManager;
+import davidneilan.com.PlayersStuff.HeroAnimation;
+import davidneilan.com.PlayersStuff.Player;
+import davidneilan.com.PlayersStuff.Position;
 import davidneilan.com.SceneManager;
 import davidneilan.com.inter.English;
 import davidneilan.com.inter.Language;
@@ -16,13 +19,14 @@ public class PlayingGameState extends TransferableGameState {
     private int barX = 556, barY = 925;
 
     private Image imgBar;
-
+    private Player player;
 
     ItemBarManager barManager;
 
     private SceneManager sceneManager;
 
     Item key;
+    Item phone;
 
     private Language language;
 
@@ -43,18 +47,24 @@ public class PlayingGameState extends TransferableGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        imgBar = new Image("res/sprites/ItemBarBackground.png");
+        imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
         barManager = new ItemBarManager(barX, barY, imgBar.getHeight());
 
+        barManager.addItem(key);
+
         //items
-        key = new Item("Key", new Image("res/sprites/key.png"));
+        key = new Item("Key", new Image("Assets/Sprites/key.png"));
+        phone = new Item("Phone", new Image("Assets/Sprites/phone.png"));
+
+        barManager.addItem(key);
+        barManager.addItem(phone);
 
         sceneManager = new SceneManager();
         sceneManager.init();
 
 
         String lan = "es";
-        switch(lan){
+        switch (lan) {
             case "en":
                 language = new English();
                 break;
@@ -63,6 +73,9 @@ public class PlayingGameState extends TransferableGameState {
                 break;
 
         }
+
+        // create player
+        this.player = new Player(HeroAnimation.getAnimation(), Position.of(900, 900), 1000);
 
     }
 
@@ -81,7 +94,7 @@ public class PlayingGameState extends TransferableGameState {
 
         //say gelow
         g.setColor(Color.blue);
-        g.drawString( " " +language.getString("Welcome"),600,600);
+        g.drawString(" " + language.getString("Welcome"), 600, 600);
 
         if (PlayingGameState.debug) {
             g.setColor(Color.red);
@@ -90,6 +103,10 @@ public class PlayingGameState extends TransferableGameState {
             g.drawString(xScaled + " " + yScaled + " " + imgBar.getHeight(), 50, 50);
             g.drawString("Box clicked: " + clickedBox, 50, 70);
         }
+
+        // render player movement
+        this.player.render();
+        this.player.moveTo(Position.of(mouseX, mouseY));
     }
 
     @Override
@@ -111,11 +128,8 @@ public class PlayingGameState extends TransferableGameState {
 
         clickedBox = barManager.getSlot(x, y);
 
-        System.out.println( barManager.addItem(key));
 
-        if(barManager.getSlot(x, y)==1){
-            System.out.println( barManager.removeItem(1));
-        }
+        barManager.selectionListener(x, y);
 
         sceneManager.onSceneClick(x, y);
     }

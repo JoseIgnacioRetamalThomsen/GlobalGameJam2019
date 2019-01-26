@@ -1,9 +1,6 @@
 package davidneilan.com;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 
 import java.util.HashMap;
 
@@ -13,9 +10,13 @@ public class ItemBarManager {
     private int barY;//bar position y
     private int boxSize;
 
+    private SpriteSheet sh;
+
     private Image imgBar;
 
     private HashMap<Integer, Item> items;
+
+    int selectedItem =0;//0 means no selected item
 
     public ItemBarManager(int barX, int barY, int boxSize) {
 
@@ -24,7 +25,10 @@ public class ItemBarManager {
         this.boxSize = boxSize;
 
         try {
-            imgBar = new Image("res/sprites/ItemBarBackground.png");
+            imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
+
+            sh = new SpriteSheet("Assets/Sprites/inventory.png",810,135);
+
         } catch (SlickException e) {
             e.printStackTrace();
         }
@@ -81,6 +85,20 @@ public class ItemBarManager {
         return -1;
     }
 
+
+    public void selectionListener(int x,int y){
+        int selection = getSlot(x,y);
+        if(selection>0&& selection <= items.size()){
+
+            System.out.println(selection);
+
+            selectedItem = selectedItem != selection ? selection : 0;
+
+        }else{
+            selectedItem =0;
+        }
+
+    }
     /**
      * Render bar
      *
@@ -88,7 +106,9 @@ public class ItemBarManager {
      */
     public void render() throws SlickException {
 
-        imgBar.draw(barX, barY);
+        //imgBar.draw(barX, barY);
+
+        sh.getSprite(0,selectedItem).draw(barX, barY);
 
         if (items.size() > 0) {
             for (int i = 1; i <= 6; i++) {
