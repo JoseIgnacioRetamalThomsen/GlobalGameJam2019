@@ -16,7 +16,8 @@ public class TextArea {
 
     public void render(Graphics g){
         if(this.text == null){
-            System.out.println("Text is null");
+
+
             return;
         }
 
@@ -36,7 +37,7 @@ public class TextArea {
     }
 
     public void clearText(){
-        System.out.println("set text to null");
+
         this.text = null;
     }
 

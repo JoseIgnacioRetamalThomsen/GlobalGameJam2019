@@ -20,6 +20,7 @@ public class English implements Language {
         strings.put("S7_DOOR_3","CLOSE THE DOOR");
         strings.put("S8_PICK_KEY_1","FIND THE KEY");
         strings.put("S8_PICK_KEY_2","PICK THE KEY");
+        strings.put("S1_NEEDKEY","YOU NEED A KEY");
     }
 
 
