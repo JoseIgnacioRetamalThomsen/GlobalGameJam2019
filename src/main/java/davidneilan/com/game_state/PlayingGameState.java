@@ -130,7 +130,7 @@ public class PlayingGameState extends TransferableGameState {
 
             //say gelow
             g.setColor(Color.blue);
-            g.drawString(" " + language.getString("Welcome"), 600, 600);
+            g.drawString(" " + language.getString("S1_KNOCK"), 600, 600);
         }
 
         // render player movement
@@ -140,7 +140,7 @@ public class PlayingGameState extends TransferableGameState {
         //show dialog
 
         // Show text area
-        this.textArea.setText(language.getString("S0_GREET"));
+        this.textArea.setText(language.getString("S1_KNOCK"));
         this.textArea.render(g);
 
     }
@@ -186,7 +186,7 @@ public class PlayingGameState extends TransferableGameState {
     public void keyPressed(int key, char c) {
         System.out.println(Input.KEY_Q);
         if (key == Input.KEY_Q && !inventory.isEmpty()) {
-            System.out.println("sdfgasdfsd");
+
             inventory.dropSelectedItem();
         }
     }
