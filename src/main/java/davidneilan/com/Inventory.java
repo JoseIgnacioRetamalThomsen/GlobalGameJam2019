@@ -21,6 +21,8 @@ public class Inventory {
 
     private Player player;
 
+    private int cash = 00000000;
+
     public Inventory(int barX, int barY, int boxSize, Player player) {
 
         this.barX = barX;
@@ -40,6 +42,23 @@ public class Inventory {
 
         this.player = player;
 
+
+    }
+
+    public void setCach(int newCash) {
+        this.cash = newCash;
+    }
+
+    public void addCash(int cashToAdd){
+        this.cash += cashToAdd;
+    }
+
+    public boolean getCash(int cashToGet){
+        if(this.cash<cashToGet){
+            return false;
+        }
+        this.cash-= cashToGet;
+        return true;
     }
 
     /**
@@ -50,7 +69,8 @@ public class Inventory {
      */
     public boolean removeItem(int slot) {
 
-        if (items.remove(slot) != null) {
+        if (items.get(slot) != null) {
+            items.put(slot, null);
             player.dropItem(slot);
             return true;
 
@@ -124,7 +144,7 @@ public class Inventory {
      *
      * @throws SlickException
      */
-    public void render() throws SlickException {
+    public void render(Graphics g) throws SlickException {
 
         //imgBar.draw(barX, barY);
 
@@ -141,20 +161,21 @@ public class Inventory {
 
 
         }
-        //render items
+
+        g.drawString("$ : " + cash, 1800, 0);
 
     }
 
-    public boolean isEmpty(){
-        if(items.size()==0) return true;
+    public boolean isEmpty() {
+        if (items.size() == 0) return true;
         return false;
     }
 
     public void dropSelectedItem() {
-        if(selectedItem>0){
+        if (selectedItem > 0) {
             this.removeItem(selectedItem);
             player.dropItem(selectedItem);
-            this.selectedItem=0;
+            this.selectedItem = 0;
         }
     }
 }

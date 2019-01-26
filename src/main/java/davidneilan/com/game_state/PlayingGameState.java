@@ -40,6 +40,8 @@ public class PlayingGameState extends TransferableGameState {
     private int mouseX, mouseY;
 
 
+
+
     public PlayingGameState(Game game) {
         super(game);
     }
@@ -137,7 +139,9 @@ public class PlayingGameState extends TransferableGameState {
         // render player movement
         this.player.render();
 
-        inventory.render();
+        inventory.render(g);
+        //show dialog
+
 
     }
 
