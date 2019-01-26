@@ -35,11 +35,15 @@ public class SceneManager {
         sceneObj = new SceneObject(Color.red, anim);
         sceneObjs.add(sceneObj);
         sceneBg = new Image("/res/sprites/BasicRoom.png");
-        objMap = new Image("/res/sprites/scene1-object-map-test2.png");
+        objMap = new Image("/res/sprites/scene1-object-map.png");
         scenes[0] = new Scene(sceneBg, objMap, sceneObjs);
     }
 
     public void render() throws SlickException {
         scenes[currentScene].render();
+    }
+
+    public void onSceneClick(int clickX, int clickY) {
+        scenes[currentScene].onSceneClick(clickX, clickY);
     }
 }

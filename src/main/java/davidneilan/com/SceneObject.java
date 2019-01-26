@@ -21,7 +21,7 @@ public class SceneObject {
     }
 
     public void onClick() {
-
+        anim.setCurrentFrame((anim.getFrame() + 1) % anim.getFrameCount());
     }
 
     public Image getSprite() {
