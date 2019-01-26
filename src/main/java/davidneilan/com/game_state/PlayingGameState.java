@@ -30,6 +30,7 @@ public class PlayingGameState extends TransferableGameState {
     Item key;
     Item phone;
     Item tyre;
+    Item tyreIron;
 
     private Language language;
 
@@ -83,11 +84,13 @@ public class PlayingGameState extends TransferableGameState {
         key = new Item("Key", new Image("Assets/Sprites/key.png"));
         phone = new Item("Phone", new Image("Assets/Sprites/phone.png"));
         tyre = new Item("Tyre",new Image("Assets/Sprites/tyre.png"));
+        tyreIron = new Item("Tyre Iron", new Image("Assets/Sprites/tyreiron.png"));
 
 
         inventory.addItem(key);
         inventory.addItem(phone);
         inventory.addItem(tyre);
+        inventory.addItem(tyreIron);
 
 
 
