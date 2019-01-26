@@ -34,6 +34,17 @@ public class ItemBarManager {
     }
 
     /**
+     * remove item in specifie slot from inventory
+     * @param slot position of the item
+     * @return true if there was an item in the slot and was removed
+     */
+    public boolean removeItem(int slot){
+
+        if(items.remove(slot)!= null) return true;
+
+        return false;
+    }
+    /**
      * Add item to invetory
      *
      * @param item to add
@@ -44,13 +55,14 @@ public class ItemBarManager {
 
         for (int i = 1; i <= 6; i++) {
             if (items.get(i) == null) {
-                items.put(i, item);
-            }
 
+                items.put(i, item);
+                break;
+            }
 
         }
 
-        return false;
+        return true;
     }
 
     /**
@@ -77,5 +89,19 @@ public class ItemBarManager {
     public void render() throws SlickException {
 
         imgBar.draw(barX, barY);
+
+        if (items.size() > 0) {
+            for (int i = 1; i <= 6; i++) {
+                if (items.get(i) != null) {
+
+                    items.get(i).draw(barX+(i-1)*135, barY);
+                }
+
+            }
+
+
+        }
+        //render items
+
     }
 }

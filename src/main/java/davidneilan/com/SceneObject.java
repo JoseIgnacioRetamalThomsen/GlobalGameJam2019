@@ -1,9 +1,9 @@
 package davidneilan.com;
 
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 
-import java.awt.Color;
 import java.util.List;
 
 public class SceneObject {
@@ -21,7 +21,7 @@ public class SceneObject {
     }
 
     public void onClick() {
-
+        anim.setCurrentFrame((anim.getFrame() + 1) % anim.getFrameCount());
     }
 
     public Image getSprite() {

@@ -27,6 +27,7 @@ public class Game extends BasicGame {
 
     ItemBarManager barManager;
 
+    private SceneManager sceneManager;
 
     Item key;
 
@@ -37,29 +38,37 @@ public class Game extends BasicGame {
     @Override
     public void init(GameContainer container) throws SlickException {
 
-       
+
         imgBar = new Image("res/sprites/ItemBarBackground.png");
         barManager = new ItemBarManager(barX, barY, imgBar.getHeight());
 
         //items
         key = new Item("Key", new Image("res/sprites/key.png"));
 
+        sceneManager = new SceneManager();
+        sceneManager.init();
+
     }
 
     @Override
     public void update(GameContainer container, int delta) throws SlickException {
 
+
     }
 
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-
+        // render current scene
+        sceneManager.render();
 
         g.drawString(xScaled + " " + yScaled + " " + imgBar.getHeight(), 50, 50);
         g.drawString("Box clicked: " + clickedBox, 50, 70);
 
         barManager.render();
-        barManager.addItem(key);
+
+
+
+
 
     }
 
@@ -81,6 +90,13 @@ public class Game extends BasicGame {
 
         clickedBox = barManager.getSlot(x, y);
 
+        System.out.println( barManager.addItem(key));
+
+        if(barManager.getSlot(x, y)==1){
+            System.out.println( barManager.removeItem(1));
+        }
+
+        sceneManager.onSceneClick(x, y);
     }
 
     @Override
