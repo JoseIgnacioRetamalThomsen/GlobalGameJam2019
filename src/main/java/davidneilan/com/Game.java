@@ -1,5 +1,8 @@
 package davidneilan.com;
 
+import davidneilan.com.inter.English;
+import davidneilan.com.inter.Language;
+import davidneilan.com.inter.Spanish;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
@@ -33,10 +36,14 @@ public class Game extends BasicGame {
 
     Item key;
 
+<<<<<<< HEAD
+    private Language language;
+=======
     public static boolean debug = false;
     private static final int DEBUG_BUTTON = Input.KEY_LSHIFT;
 
     private int mouseX, mouseY;
+>>>>>>> 39b530bd7840466c5322aa3aff882dc787731900
 
     public Game() {
         super("A Slick2d game");
@@ -54,6 +61,18 @@ public class Game extends BasicGame {
 
         sceneManager = new SceneManager();
         sceneManager.init();
+
+
+        String lan = "es";
+        switch(lan){
+            case "en":
+                language = new English();
+                break;
+            case "es":
+                language = new Spanish();
+                break;
+
+        }
 
     }
 
@@ -74,9 +93,18 @@ public class Game extends BasicGame {
             g.setColor(Color.red);
             g.drawString(String.format("Mouse at: x=%d,y=%d", mouseX, mouseY), 20, 20);
 
+<<<<<<< HEAD
+        //say gelow
+        g.setColor(Color.blue);
+        g.drawString( " " +language.getString("Welcome"),600,600);
+
+
+
+=======
             g.drawString(xScaled + " " + yScaled + " " + imgBar.getHeight(), 50, 50);
             g.drawString("Box clicked: " + clickedBox, 50, 70);
         }
+>>>>>>> 39b530bd7840466c5322aa3aff882dc787731900
     }
 
     @Override
@@ -115,6 +143,9 @@ public class Game extends BasicGame {
     static Dimension screenSize;
 
     public static void main(String[] args) throws SlickException {
+
+
+
         AppGameContainer app = new AppGameContainer(new ScalableGame(new Game(), WIDTH, HEIGHT, false));
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
