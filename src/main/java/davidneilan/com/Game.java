@@ -27,6 +27,7 @@ public class Game extends BasicGame {
 
     ItemBarManager barManager;
 
+    private SceneManager sceneManager;
 
     Item key;
 
@@ -44,6 +45,9 @@ public class Game extends BasicGame {
         //items
         key = new Item("Key", new Image("res/sprites/key.png"));
 
+        sceneManager = new SceneManager();
+        sceneManager.init();
+
     }
 
     @Override
@@ -53,7 +57,8 @@ public class Game extends BasicGame {
 
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-
+        // render current scene
+        sceneManager.render();
 
         g.drawString(xScaled + " " + yScaled + " " + imgBar.getHeight(), 50, 50);
         g.drawString("Box clicked: " + clickedBox, 50, 70);
