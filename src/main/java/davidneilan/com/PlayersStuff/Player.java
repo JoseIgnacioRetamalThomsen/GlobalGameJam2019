@@ -12,6 +12,7 @@ public class Player {
     private static final int OFFSET_Y = -400;
 
     private List<Item> inventory;
+   // private Inventory invetory;
     private Animation animation;
     private MovementComponent movementComponent;
     private int money;

@@ -1,7 +1,7 @@
 package davidneilan.com.game_state;
 
 import davidneilan.com.Item;
-import davidneilan.com.ItemBarManager;
+import davidneilan.com.Inventory;
 import davidneilan.com.PlayersStuff.HeroAnimation;
 import davidneilan.com.PlayersStuff.Player;
 import davidneilan.com.PlayersStuff.Position;
@@ -21,7 +21,7 @@ public class PlayingGameState extends TransferableGameState {
     private Image imgBar;
     private Player player;
 
-    ItemBarManager barManager;
+    Inventory barManager;
 
     private SceneManager sceneManager;
 
@@ -48,7 +48,7 @@ public class PlayingGameState extends TransferableGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
-        barManager = new ItemBarManager(barX, barY, imgBar.getHeight());
+        barManager = new Inventory(barX, barY, imgBar.getHeight());
 
         barManager.addItem(key);
 
@@ -90,11 +90,9 @@ public class PlayingGameState extends TransferableGameState {
         // render current scene
         sceneManager.render(g);
 
-        barManager.render();
 
-        //say gelow
-        g.setColor(Color.blue);
-        g.drawString(" " + language.getString("Welcome"), 600, 600);
+
+
 
         if (PlayingGameState.debug) {
             g.setColor(Color.red);
@@ -102,11 +100,18 @@ public class PlayingGameState extends TransferableGameState {
 
             g.drawString(xScaled + " " + yScaled + " " + imgBar.getHeight(), 50, 50);
             g.drawString("Box clicked: " + clickedBox, 50, 70);
+
+            //say gelow
+            g.setColor(Color.blue);
+            g.drawString(" " + language.getString("Welcome"), 600, 600);
         }
 
         // render player movement
         this.player.render();
         this.player.moveTo(Position.of(mouseX, mouseY));
+
+        barManager.render();
+
     }
 
     @Override
