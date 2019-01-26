@@ -53,7 +53,6 @@ public class MenuGameState extends TransferableGameState {
     public void mouseClicked(int button, int x, int y, int clickCount) {
         int buttonClick = buttons.mouseClicked(x,y);
         if(buttonClick!=-1){
-            enterState(1);
 
             switch (buttonClick) {
                 case 0:
@@ -67,6 +66,7 @@ public class MenuGameState extends TransferableGameState {
                     PlayingGameState.language = new Spanish();
                     break;
             }
+            enterState(1);
             PlayingGameState.langaugeStatic=buttonClick;
 
         }

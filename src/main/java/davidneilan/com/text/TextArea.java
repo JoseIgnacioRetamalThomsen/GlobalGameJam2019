@@ -15,14 +15,20 @@ public class TextArea {
 
 
     public void render(Graphics g){
-        if(Objects.isNull(this.text)){ return; }
+        if(this.text == null){
+            System.out.println("Text is null");
+            return;
+        }
 
         g.setColor(Color.darkGray);
         g.fillRect(410, 360, 1100, 200);
         g.setColor(Color.white);
         g.drawString(text, 430, 380);
+
         g.setColor(Color.black);
         g.fillRect(1460, 510, 50, 50);
+        g.setColor(Color.red);
+        g.drawString("[ X ]", 1465, 525);
     }
 
     public void setText(String text){
@@ -30,9 +36,13 @@ public class TextArea {
     }
 
     public void clearText(){
+        System.out.println("set text to null");
         this.text = null;
     }
 
+    public  boolean hasText(){
+        return Objects.nonNull(text);
+    }
 
 
 }

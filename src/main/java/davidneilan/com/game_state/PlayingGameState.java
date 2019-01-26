@@ -24,7 +24,7 @@ public class PlayingGameState extends TransferableGameState {
     // private Image imgBar;
     private Player player;
 
-    private TextArea textArea;
+    private TextArea textArea = new TextArea();
 
     Inventory inventory;
 
@@ -97,7 +97,7 @@ public class PlayingGameState extends TransferableGameState {
         inventory.addItem(tyreIron);
 
         // initialize text area
-        this.textArea = new TextArea();
+//        this.textArea.setText(language.getString("S0_GREET"));
     }
 
     @Override
@@ -140,9 +140,12 @@ public class PlayingGameState extends TransferableGameState {
         //show dialog
 
         // Show text area
-        this.textArea.setText(language.getString("S0_GREET"));
-        this.textArea.render(g);
 
+        this.textArea.setText(language.getString("S0_GREET"));
+
+        if( textArea.hasText() ){
+            this.textArea.render(g);
+        }
     }
 
     @Override
@@ -178,7 +181,13 @@ public class PlayingGameState extends TransferableGameState {
 
     @Override
     public void mouseReleased(int button, int x, int y) {
-
+        // g.fillRect(1460, 510, 50, 50);
+        boolean exitButtonX = 1460 < x && x < 1510;
+        boolean exitButtonY = 510 < y && y < 560;
+        if( exitButtonX && exitButtonY ){
+            this.textArea.clearText();
+            System.out.println("Clear text");
+        }
     }
 
     @Override
