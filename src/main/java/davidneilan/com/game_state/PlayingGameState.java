@@ -21,7 +21,7 @@ public class PlayingGameState extends TransferableGameState {
     private Image imgBar;
     private Player player;
 
-    Inventory barManager;
+    Inventory inventory;
 
     private SceneManager sceneManager;
 
@@ -42,22 +42,15 @@ public class PlayingGameState extends TransferableGameState {
 
     @Override
     public int getID() {
-        return 0;
+        return 1;
     }
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
-        barManager = new Inventory(barX, barY, imgBar.getHeight());
+        //imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
 
-        barManager.addItem(key);
 
-        //items
-        key = new Item("Key", new Image("Assets/Sprites/key.png"));
-        phone = new Item("Phone", new Image("Assets/Sprites/phone.png"));
 
-        barManager.addItem(key);
-        barManager.addItem(phone);
 
         sceneManager = new SceneManager();
         sceneManager.init();
@@ -76,7 +69,17 @@ public class PlayingGameState extends TransferableGameState {
 
         // create player
         this.player = new Player(HeroAnimation.getAnimation(), Position.of(900, 900), 1000);
+        inventory = new Inventory(barX, barY, imgBar.getHeight(),player);
 
+
+        inventory.addItem(key);
+
+        //items
+        key = new Item("Key", new Image("Assets/Sprites/key.png"));
+        phone = new Item("Phone", new Image("Assets/Sprites/phone.png"));
+
+        inventory.addItem(key);
+        inventory.addItem(phone);
     }
 
     @Override
@@ -110,7 +113,7 @@ public class PlayingGameState extends TransferableGameState {
         this.player.render();
         this.player.moveTo(Position.of(mouseX, mouseY));
 
-        barManager.render();
+        inventory.render();
 
     }
 
@@ -131,10 +134,10 @@ public class PlayingGameState extends TransferableGameState {
         x1 = x;
         y1 = y;
 
-        clickedBox = barManager.getSlot(x, y);
+        clickedBox = inventory.getSlot(x, y);
 
 
-        barManager.selectionListener(x, y);
+        inventory.selectionListener(x, y);
 
         sceneManager.onSceneClick(x, y);
     }

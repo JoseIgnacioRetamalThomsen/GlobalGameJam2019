@@ -1,5 +1,6 @@
 package davidneilan.com;
 
+import davidneilan.com.PlayersStuff.Player;
 import org.newdawn.slick.*;
 
 import java.util.HashMap;
@@ -18,7 +19,9 @@ public class Inventory {
 
     int selectedItem = 0;//0 means no selected item
 
-    public Inventory(int barX, int barY, int boxSize) {
+    private Player player;
+
+    public Inventory(int barX, int barY, int boxSize,Player player) {
 
         this.barX = barX;
         this.barY = barY;
@@ -35,6 +38,8 @@ public class Inventory {
 
         items = new HashMap<Integer, Item>();
 
+        this.player = player;
+
     }
 
     /**
@@ -45,7 +50,12 @@ public class Inventory {
      */
     public boolean removeItem(int slot) {
 
-        if (items.remove(slot) != null) return true;
+        if (items.remove(slot) != null)
+        {
+            player.dropItem(slot);
+            return true;
+
+        }
 
         return false;
     }
@@ -63,6 +73,7 @@ public class Inventory {
             if (items.get(i) == null) {
 
                 items.put(i, item);
+                player.addToInventory(items.get(i));
                 break;
             }
 
