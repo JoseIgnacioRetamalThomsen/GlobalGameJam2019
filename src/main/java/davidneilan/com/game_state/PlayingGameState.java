@@ -7,6 +7,7 @@ import davidneilan.com.PlayersStuff.Player;
 import davidneilan.com.PlayersStuff.Position;
 import davidneilan.com.SceneManager;
 import davidneilan.com.inter.English;
+import davidneilan.com.inter.French;
 import davidneilan.com.inter.Language;
 import davidneilan.com.inter.Spanish;
 import org.newdawn.slick.*;
@@ -16,6 +17,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class PlayingGameState extends TransferableGameState {
+    public static int langaugeStatic;
     private int barX = 556, barY = 925;
 
     private Image imgBar;
@@ -64,14 +66,16 @@ public class PlayingGameState extends TransferableGameState {
 
 
         String lan = "es";
-        switch (lan) {
-            case "en":
+        switch (langaugeStatic) {
+            case 0:
                 language = new English();
                 break;
-            case "es":
+            case 1:
+                language = new French();
+                break;
+            case 2:
                 language = new Spanish();
                 break;
-
         }
 
         // create player
@@ -94,7 +98,7 @@ public class PlayingGameState extends TransferableGameState {
 
         //say gelow
         g.setColor(Color.blue);
-        g.drawString(" " + language.getString("Welcome"), 600, 600);
+        g.drawString(" " + language.getString("S1_KNOCK"), 600, 600);
 
         if (PlayingGameState.debug) {
             g.setColor(Color.red);

@@ -1,10 +1,7 @@
 package davidneilan.com.game_state;
 
 import davidneilan.com.game_state.menu.ButtonSet;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class MenuGameState extends TransferableGameState {
@@ -21,8 +18,16 @@ public class MenuGameState extends TransferableGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        String [] languages= {"EN","FR","ES","IT","RUS"};
-        buttons = new ButtonSet(languages,10,10,300,50, Color.blue,Color.cyan,5);
+        String [] languages= {"EN","FR","ES","IT","RUS","LT","IR"};
+      Image[] images = new Image[10];
+      images[0] = new Image("Assets/Sprites/UK.png");
+      images[1] = new Image("Assets/Sprites/FR.png");
+      images[2] = new Image("Assets/Sprites/ES.png");
+      images[3] = new Image("Assets/Sprites/DE.png");
+      images[4] = new Image("Assets/Sprites/IT.png");
+      images[5] = new Image("Assets/Sprites/RU.png");
+      images[6] = new Image("Assets/Sprites/LT.png");
+        buttons = new ButtonSet(languages,10,10,50,50, Color.gray,Color.cyan,images,5);
 
     }
 
@@ -45,7 +50,9 @@ public class MenuGameState extends TransferableGameState {
     public void mouseClicked(int button, int x, int y, int clickCount) {
         int buttonClick = buttons.mouseClicked(x,y);
         if(buttonClick!=-1){
-            enterState(1);
+            enterState(1,buttonClick);
+            PlayingGameState.langaugeStatic=buttonClick;
+
         }
     }
 }

@@ -1,7 +1,7 @@
 package davidneilan.com.game_state.menu;
 
 import org.newdawn.slick.Color;
-import org.newdawn.slick.Graphics;
+import org.newdawn.slick.*;
 
 
 /**
@@ -18,8 +18,9 @@ public final class MenuButton {
     private Color hoverColor;
     private String text;
     private boolean hovering;
+    private Image image;
 
-    public MenuButton(int x, int y, int width, int height, Color color, Color hoverColor, String text) {
+    public MenuButton(int x, int y, int width, int height, Color color, Color hoverColor, String text,Image image) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -27,6 +28,7 @@ public final class MenuButton {
         this.color = color;
         this.hoverColor = hoverColor;
         this.text = text;
+        this.image=image;
     }
 
     public void setHovering(boolean hovering) {
@@ -42,7 +44,9 @@ public final class MenuButton {
         g.setColor(currentColor);
         g.fillRect(x, y, width, height);
 
+        g.setColor(Color.red);
        g.drawString(text,x,y);
+       g.drawImage(image,x,y);
     }
 
 }
