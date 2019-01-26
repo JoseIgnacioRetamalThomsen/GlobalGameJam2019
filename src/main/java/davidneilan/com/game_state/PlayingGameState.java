@@ -11,6 +11,7 @@ import davidneilan.com.inter.English;
 import davidneilan.com.inter.French;
 import davidneilan.com.inter.Language;
 import davidneilan.com.inter.Spanish;
+import davidneilan.com.text.TextArea;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
@@ -23,6 +24,8 @@ public class PlayingGameState extends TransferableGameState {
 
     // private Image imgBar;
     private Player player;
+
+    private TextArea textArea;
 
     Inventory inventory;
 
@@ -94,7 +97,8 @@ public class PlayingGameState extends TransferableGameState {
         inventory.addItem(tyreIron);
         inventory.addItem(tyreIron);
 
-
+        // initialize text area
+        this.textArea = new TextArea();
     }
 
     @Override
@@ -136,6 +140,9 @@ public class PlayingGameState extends TransferableGameState {
         inventory.render(g);
         //show dialog
 
+        // Show text area
+        this.textArea.setText(language.getString("S0_GREET"));
+        this.textArea.render(g);
 
     }
 
@@ -171,6 +178,7 @@ public class PlayingGameState extends TransferableGameState {
             System.out.println("Clicked nothing");
         }
 
+        
         if (itemClicked != null) {
             inventory.addItem(itemClicked.getItem());
         }

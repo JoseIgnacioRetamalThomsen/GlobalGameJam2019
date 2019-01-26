@@ -21,15 +21,11 @@ public class MenuGameState extends TransferableGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        String [] languages= {"EN","FR","ES","IT","RUS","LT","IR"};
-      Image[] images = new Image[10];
+        String [] languages= {"EN","FR","ES"};
+      Image[] images = new Image[3];
       images[0] = new Image("Assets/Sprites/UK.png");
       images[1] = new Image("Assets/Sprites/FR.png");
       images[2] = new Image("Assets/Sprites/ES.png");
-      images[3] = new Image("Assets/Sprites/DE.png");
-      images[4] = new Image("Assets/Sprites/IT.png");
-      images[5] = new Image("Assets/Sprites/RU.png");
-      images[6] = new Image("Assets/Sprites/LT.png");
         buttons = new ButtonSet(languages,10,10,90,54, Color.gray,Color.cyan,images,5);
 
     }
