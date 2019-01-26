@@ -30,6 +30,7 @@ public class PlayingGameState extends TransferableGameState {
     Item key;
     Item phone;
     Item tyre;
+    Item tyreIron;
 
     public static Language language;
 
@@ -84,11 +85,13 @@ public class PlayingGameState extends TransferableGameState {
         key = new Item("Key", new Image("Assets/Sprites/key.png"));
         phone = new Item("Phone", new Image("Assets/Sprites/phone.png"));
         tyre = new Item("Tyre",new Image("Assets/Sprites/tyre.png"));
+        tyreIron = new Item("Tyre Iron", new Image("Assets/Sprites/tyreiron.png"));
 
 
         inventory.addItem(key);
         inventory.addItem(phone);
         inventory.addItem(tyre);
+        inventory.addItem(tyreIron);
 
 
 
@@ -98,6 +101,9 @@ public class PlayingGameState extends TransferableGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         Input input = gc.getInput();
         debug = input.isKeyDown(DEBUG_BUTTON);
+
+        this.player.moveTo(Position.of(x1, y1));
+        this.player.update();
     }
 
     @Override
@@ -125,11 +131,8 @@ public class PlayingGameState extends TransferableGameState {
 
         // render player movement
         this.player.render();
-        this.player.moveTo(Position.of(mouseX, mouseY));
 
         inventory.render();
-
-
 
     }
 
