@@ -95,6 +95,8 @@ public class Game extends BasicGame {
         if(barManager.getSlot(x, y)==1){
             System.out.println( barManager.removeItem(1));
         }
+
+        sceneManager.onSceneClick(x, y);
     }
 
     @Override
