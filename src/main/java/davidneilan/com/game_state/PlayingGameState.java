@@ -72,14 +72,14 @@ public class PlayingGameState extends TransferableGameState {
         inventory = new Inventory(barX, barY, imgBar.getHeight(),player);
 
 
-        inventory.addItem(key);
+        //inventory.addItem(key);
 
         //items
         key = new Item("Key", new Image("Assets/Sprites/key.png"));
         phone = new Item("Phone", new Image("Assets/Sprites/phone.png"));
 
-        inventory.addItem(key);
-        inventory.addItem(phone);
+        //inventory.addItem(key);
+        //inventory.addItem(phone);
     }
 
     @Override
@@ -139,7 +139,11 @@ public class PlayingGameState extends TransferableGameState {
 
         inventory.selectionListener(x, y);
 
-        sceneManager.onSceneClick(x, y);
+        Item itemClicked = sceneManager.onSceneClick(x, y);
+
+        if (itemClicked != null) {
+            inventory.addItem(itemClicked);
+        }
     }
 
     @Override
