@@ -1,7 +1,7 @@
 package davidneilan.com.game_state;
 
 import davidneilan.com.Item;
-import davidneilan.com.ItemBarManager;
+import davidneilan.com.Inventory;
 import davidneilan.com.PlayersStuff.HeroAnimation;
 import davidneilan.com.PlayersStuff.Player;
 import davidneilan.com.PlayersStuff.Position;
@@ -20,15 +20,16 @@ public class PlayingGameState extends TransferableGameState {
     public static int langaugeStatic;
     private int barX = 556, barY = 925;
 
-    private Image imgBar;
+   // private Image imgBar;
     private Player player;
 
-    ItemBarManager barManager;
+    Inventory inventory;
 
     private SceneManager sceneManager;
 
     Item key;
     Item phone;
+    Item tyre;
 
     private Language language;
 
@@ -49,17 +50,10 @@ public class PlayingGameState extends TransferableGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
-        barManager = new ItemBarManager(barX, barY, imgBar.getHeight());
+        //imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
 
-        barManager.addItem(key);
 
-        //items
-        key = new Item("Key", new Image("Assets/Sprites/key.png"));
-        phone = new Item("Phone", new Image("Assets/Sprites/phone.png"));
 
-        barManager.addItem(key);
-        barManager.addItem(phone);
 
         sceneManager = new SceneManager();
         sceneManager.init();
@@ -80,6 +74,22 @@ public class PlayingGameState extends TransferableGameState {
 
         // create player
         this.player = new Player(HeroAnimation.getAnimation(), Position.of(900, 900), 1000);
+        inventory = new Inventory(barX, barY, 135,player);
+
+
+        //inventory.addItem(key);
+
+        //items
+        key = new Item("Key", new Image("Assets/Sprites/key.png"));
+        phone = new Item("Phone", new Image("Assets/Sprites/phone.png"));
+        tyre = new Item("Tyre",new Image("Assets/Sprites/tyre.png"));
+
+
+        inventory.addItem(key);
+        inventory.addItem(phone);
+        inventory.addItem(tyre);
+
+
 
     }
 
@@ -94,23 +104,36 @@ public class PlayingGameState extends TransferableGameState {
         // render current scene
         sceneManager.render(g);
 
-        barManager.render();
 
+<<<<<<< HEAD
         //say gelow
         g.setColor(Color.blue);
         g.drawString(" " + language.getString("S1_KNOCK"), 600, 600);
+=======
+
+
+>>>>>>> 614a273cff8e0536602aa6c9e543938b6f16de1f
 
         if (PlayingGameState.debug) {
             g.setColor(Color.red);
             g.drawString(String.format("Mouse at: x=%d,y=%d", mouseX, mouseY), 20, 20);
 
-            g.drawString(xScaled + " " + yScaled + " " + imgBar.getHeight(), 50, 50);
+            g.drawString(xScaled + " " + yScaled + " " + 135, 50, 50);
             g.drawString("Box clicked: " + clickedBox, 50, 70);
+
+            //say gelow
+            g.setColor(Color.blue);
+            g.drawString(" " + language.getString("Welcome"), 600, 600);
         }
 
         // render player movement
         this.player.render();
         this.player.moveTo(Position.of(mouseX, mouseY));
+
+        inventory.render();
+
+
+
     }
 
     @Override
@@ -130,17 +153,32 @@ public class PlayingGameState extends TransferableGameState {
         x1 = x;
         y1 = y;
 
-        clickedBox = barManager.getSlot(x, y);
+        clickedBox = inventory.getSlot(x, y);
 
 
-        barManager.selectionListener(x, y);
+        inventory.selectionListener(x, y);
 
-        sceneManager.onSceneClick(x, y);
+
+        Item itemClicked = sceneManager.onSceneClick(x, y);
+
+        if (itemClicked != null) {
+            inventory.addItem(itemClicked);
+        }
+
     }
 
     @Override
     public void mouseReleased(int button, int x, int y) {
 
+    }
+
+    @Override
+    public void keyPressed(int key, char c){
+        System.out.println(Input.KEY_Q);
+        if(key==Input.KEY_Q && !inventory.isEmpty()){
+            System.out.println("sdfgasdfsd");
+            inventory.dropSelectedItem();
+        }
     }
 
 }

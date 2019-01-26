@@ -1,10 +1,11 @@
 package davidneilan.com;
 
+import davidneilan.com.PlayersStuff.Player;
 import org.newdawn.slick.*;
 
 import java.util.HashMap;
 
-public class ItemBarManager {
+public class Inventory {
 
     private int barX;//bar position x
     private int barY;//bar position y
@@ -16,9 +17,11 @@ public class ItemBarManager {
 
     private HashMap<Integer, Item> items;
 
-    int selectedItem =0;//0 means no selected item
+    int selectedItem = 0;//0 means no selected item
 
-    public ItemBarManager(int barX, int barY, int boxSize) {
+    private Player player;
+
+    public Inventory(int barX, int barY, int boxSize, Player player) {
 
         this.barX = barX;
         this.barY = barY;
@@ -27,7 +30,7 @@ public class ItemBarManager {
         try {
             imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
 
-            sh = new SpriteSheet("Assets/Sprites/inventory.png",810,135);
+            sh = new SpriteSheet("Assets/Sprites/inventory.png", 810, 135);
 
         } catch (SlickException e) {
             e.printStackTrace();
@@ -35,19 +38,27 @@ public class ItemBarManager {
 
         items = new HashMap<Integer, Item>();
 
+        this.player = player;
+
     }
 
     /**
      * remove item in specifie slot from inventory
+     *
      * @param slot position of the item
      * @return true if there was an item in the slot and was removed
      */
-    public boolean removeItem(int slot){
+    public boolean removeItem(int slot) {
 
-        if(items.remove(slot)!= null) return true;
+        if (items.remove(slot) != null) {
+            player.dropItem(slot);
+            return true;
+
+        }
 
         return false;
     }
+
     /**
      * Add item to invetory
      *
@@ -61,6 +72,7 @@ public class ItemBarManager {
             if (items.get(i) == null) {
 
                 items.put(i, item);
+                player.addToInventory(items.get(i));
                 break;
             }
 
@@ -86,19 +98,27 @@ public class ItemBarManager {
     }
 
 
-    public void selectionListener(int x,int y){
-        int selection = getSlot(x,y);
-        if(selection>0&& selection <= items.size()){
+    /**
+     * Select or diselect item
+     *
+     * @param x x mouse position
+     * @param y y mouse position
+     */
+    public void selectionListener(int x, int y) {
+        int selection = getSlot(x, y);
+        if (selection > 0 && selection <= items.size()) {
 
             System.out.println(selection);
 
             selectedItem = selectedItem != selection ? selection : 0;
 
-        }else{
-            selectedItem =0;
+        } else {
+            selectedItem = 0;
         }
 
     }
+
+
     /**
      * Render bar
      *
@@ -108,13 +128,13 @@ public class ItemBarManager {
 
         //imgBar.draw(barX, barY);
 
-        sh.getSprite(0,selectedItem).draw(barX, barY);
+        sh.getSprite(0, selectedItem).draw(barX, barY);
 
         if (items.size() > 0) {
             for (int i = 1; i <= 6; i++) {
                 if (items.get(i) != null) {
 
-                    items.get(i).draw(barX+(i-1)*135, barY);
+                    items.get(i).draw(barX + (i - 1) * 135, barY);
                 }
 
             }
@@ -123,5 +143,17 @@ public class ItemBarManager {
         }
         //render items
 
+    }
+
+    public boolean isEmpty(){
+        if(items.size()==0) return true;
+        return false;
+    }
+
+    public void dropSelectedItem() {
+        if(selectedItem>0){
+            this.removeItem(selectedItem);
+            player.dropItem(selectedItem);
+        }
     }
 }

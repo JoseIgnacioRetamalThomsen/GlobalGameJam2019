@@ -43,7 +43,7 @@ public class SceneManager {
         scenes[currentScene].render(g);
     }
 
-    public void onSceneClick(int clickX, int clickY) {
-        scenes[currentScene].onSceneClick(clickX, clickY);
+    public Item onSceneClick(int clickX, int clickY) {
+        return scenes[currentScene].onSceneClick(clickX, clickY);
     }
 }

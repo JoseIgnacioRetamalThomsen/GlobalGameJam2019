@@ -5,6 +5,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,18 +44,27 @@ public class SceneObject {
     public void render(Graphics g) {
         anim.getCurrentFrame().draw();
 
-        if (anim.getFrame() == itemShowingFrame && items.size() > 0) {
+        if (itemsShowing() && items.size() > 0) {
             // render items
             for (int i = 0; i < items.size(); i++) {
                 Item item = items.get(i);
                 ItemScreenPosition pos = itemPosList.get(i);
-                g.drawImage(item.getIcon(),
-                        pos.getX(), pos.getY(),
-                        pos.getX() + pos.getDrawSize(),pos.getY() + pos.getDrawSize(),
-                        pos.getDrawSize(), pos.getDrawSize(),
-                        pos.getDrawSize(), pos.getDrawSize());
+                item.getIcon().draw(pos.getX(), pos.getY(),
+                        ((float) pos.getDrawSize() / item.getIcon().getWidth()));
             }
         }
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public List<ItemScreenPosition> getItemPosList() {
+        return itemPosList;
+    }
+
+    public boolean itemsShowing() {
+        return (anim.getFrame() == itemShowingFrame);
     }
 
 }
