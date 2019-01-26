@@ -21,7 +21,7 @@ public class Inventory {
 
     private Player player;
 
-    public Inventory(int barX, int barY, int boxSize,Player player) {
+    public Inventory(int barX, int barY, int boxSize, Player player) {
 
         this.barX = barX;
         this.barY = barY;
@@ -50,8 +50,7 @@ public class Inventory {
      */
     public boolean removeItem(int slot) {
 
-        if (items.remove(slot) != null)
-        {
+        if (items.remove(slot) != null) {
             player.dropItem(slot);
             return true;
 
@@ -144,5 +143,17 @@ public class Inventory {
         }
         //render items
 
+    }
+
+    public boolean isEmpty(){
+        if(items.size()==0) return true;
+        return false;
+    }
+
+    public void dropSelectedItem() {
+        if(selectedItem>0){
+            this.removeItem(selectedItem);
+            player.dropItem(selectedItem);
+        }
     }
 }

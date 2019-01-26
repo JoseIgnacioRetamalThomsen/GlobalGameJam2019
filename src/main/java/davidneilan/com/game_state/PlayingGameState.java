@@ -18,7 +18,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class PlayingGameState extends TransferableGameState {
     private int barX = 556, barY = 925;
 
-    private Image imgBar;
+   // private Image imgBar;
     private Player player;
 
     Inventory inventory;
@@ -69,7 +69,7 @@ public class PlayingGameState extends TransferableGameState {
 
         // create player
         this.player = new Player(HeroAnimation.getAnimation(), Position.of(900, 900), 1000);
-        inventory = new Inventory(barX, barY, imgBar.getHeight(),player);
+        inventory = new Inventory(barX, barY, 135,player);
 
 
         inventory.addItem(key);
@@ -101,7 +101,7 @@ public class PlayingGameState extends TransferableGameState {
             g.setColor(Color.red);
             g.drawString(String.format("Mouse at: x=%d,y=%d", mouseX, mouseY), 20, 20);
 
-            g.drawString(xScaled + " " + yScaled + " " + imgBar.getHeight(), 50, 50);
+            g.drawString(xScaled + " " + yScaled + " " + 135, 50, 50);
             g.drawString("Box clicked: " + clickedBox, 50, 70);
 
             //say gelow
@@ -145,6 +145,15 @@ public class PlayingGameState extends TransferableGameState {
     @Override
     public void mouseReleased(int button, int x, int y) {
 
+    }
+
+    @Override
+    public void keyPressed(int key, char c){
+        System.out.println(Input.KEY_Q);
+        if(key==Input.KEY_Q && !inventory.isEmpty()){
+            System.out.println("sdfgasdfsd");
+            inventory.dropSelectedItem();
+        }
     }
 
 }
