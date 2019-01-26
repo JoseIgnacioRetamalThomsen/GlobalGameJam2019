@@ -34,7 +34,7 @@ public class SceneManager {
                 new ItemScreenPosition(1533, 549, 20));
         sceneObj.setItemShowingFrame(1);
         sceneObjs.add(sceneObj);
-        sceneBg = new Image("Assets/Sprites/BasicRoom.png");
+        sceneBg = new Image("Assets/Backgrounds/Apartment.png");
         objMap = new Image("Assets/Sprites/scene1-object-map.png");
         scenes[0] = new Scene(sceneBg, objMap, sceneObjs);
     }
