@@ -98,8 +98,12 @@ public class PlayingGameState extends TransferableGameState {
         inventory.addItem(tyreIron);
 
         // initialize text area
+<<<<<<< HEAD
         this.textArea = new TextArea();
         this.textArea.setText(language.getString("S1_KNOCK"));
+=======
+//        this.textArea.setText(language.getString("S0_GREET"));
+>>>>>>> d29910d2f546e7cc56630c198b56ee1957002779
     }
 
     @Override
@@ -143,9 +147,22 @@ public class PlayingGameState extends TransferableGameState {
         inventory.render(g);
         //show dialog
 
+<<<<<<< HEAD
         if (isTextArea) {
             // Show text area
 
+=======
+        // Show text area
+<<<<<<< HEAD
+
+        this.textArea.setText(language.getString("S0_GREET"));
+=======
+        this.textArea.setText(language.getString("S1_KNOCK"));
+        this.textArea.render(g);
+>>>>>>> e7e4ee53052ffe4a124a298cd0cf855a9385046e
+
+        if( textArea.hasText() ){
+>>>>>>> d29910d2f546e7cc56630c198b56ee1957002779
             this.textArea.render(g);
         }
     }
@@ -200,7 +217,13 @@ public class PlayingGameState extends TransferableGameState {
 
     @Override
     public void mouseReleased(int button, int x, int y) {
-
+        // g.fillRect(1460, 510, 50, 50);
+        boolean exitButtonX = 1460 < x && x < 1510;
+        boolean exitButtonY = 510 < y && y < 560;
+        if( exitButtonX && exitButtonY ){
+            this.textArea.clearText();
+            System.out.println("Clear text");
+        }
     }
 
     @Override
