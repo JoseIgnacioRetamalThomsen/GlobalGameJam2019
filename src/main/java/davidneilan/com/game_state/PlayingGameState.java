@@ -76,6 +76,9 @@ public class PlayingGameState extends TransferableGameState {
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         Input input = gc.getInput();
         debug = input.isKeyDown(DEBUG_BUTTON);
+
+        this.player.moveTo(Position.of(x1, y1));
+        this.player.update();
     }
 
     @Override
@@ -99,7 +102,7 @@ public class PlayingGameState extends TransferableGameState {
 
         // render player movement
         this.player.render();
-        this.player.moveTo(Position.of(mouseX, mouseY));
+
     }
 
     @Override

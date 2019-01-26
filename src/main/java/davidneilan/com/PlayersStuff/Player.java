@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Player {
     private static final int MAX_ITEMS = 6;
-    private static final int OFFSET_X = 100;
+    private static final int OFFSET_X = -100;
     private static final int OFFSET_Y = -400;
 
     private List<Item> inventory;
@@ -94,11 +94,28 @@ public class Player {
 
     public void render(){
         Position pos = this.getPosition();
-        animation.draw(pos.getX() +Player.OFFSET_X, pos.getY() +Player.OFFSET_Y);
+        float playerX = (float)(pos.getX() +Player.OFFSET_X);
+        float playerY = (float)(pos.getY() +Player.OFFSET_Y);
+
+        animation.draw(playerX, playerY);
+    }
+    public void update(){
+        this.movementComponent.move();
     }
 
 
-    public void moveTo(Position of) {
-        
+    public void moveTo(Position position) {
+        if( (int)position.getX() == 0 && (int)position.getY() == 0 ){ return; }
+
+        double distX = Math.abs(getPosition().getX() - position.getX());
+        double distY = Math.abs(getPosition().getY() - position.getY());
+
+        double distXY = Math.sqrt(distX * distX + distY * distY);
+
+        if( distXY < movementComponent.getStepSize() ){
+            return;
+        }
+
+        this.movementComponent.moveTo(position);
     }
 }
