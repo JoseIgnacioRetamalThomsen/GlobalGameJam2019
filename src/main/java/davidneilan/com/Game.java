@@ -10,12 +10,22 @@ import java.awt.*;
  * A game using Slick2d
  */
 public class Game extends BasicGame {
-    /** Screen width */
+    /**
+     * Screen width
+     */
     private static final int WIDTH = 1920;
-    /** Screen height */
+    /**
+     * Screen height
+     */
     private static final int HEIGHT = 1080;
 
-    private Image img;
+
+    private int barX = 556, barY = 925;
+
+    private Image imgBar;
+
+    ItemBarManager barManager;
+
 
     public Game() {
         super("A Slick2d game");
@@ -24,6 +34,9 @@ public class Game extends BasicGame {
     @Override
     public void init(GameContainer container) throws SlickException {
 
+        imgBar = new Image("res/sprites/ItemBarBackground.png");
+        barManager = new ItemBarManager(barX,barY,imgBar.getHeight());
+
     }
 
     @Override
@@ -31,7 +44,13 @@ public class Game extends BasicGame {
 
     }
 
+
+
     public void render(GameContainer container, Graphics g) throws SlickException {
+        imgBar.draw(barX, barY);
+        g.drawString(xScaled + " " + yScaled + " " + imgBar.getHeight(), 50, 50);
+        g.drawString("Box clicked: " + clickedBox , 50 , 70);
+
 
     }
 
@@ -40,8 +59,18 @@ public class Game extends BasicGame {
 
     }
 
+    //test stuff
+    int xScaled;
+    int yScaled;
+    int x1, y1;
+    int clickedBox;
+
     @Override
     public void mousePressed(int button, int x, int y) {
+        x1 = x;
+        y1 = y;
+
+       clickedBox =  barManager.getSlot(x,y);
 
     }
 
@@ -50,12 +79,13 @@ public class Game extends BasicGame {
 
     }
 
+    static Dimension screenSize;
+
     public static void main(String[] args) throws SlickException {
-        AppGameContainer app = new AppGameContainer(new ScalableGame(new Game(), WIDTH, HEIGHT, true));
+        AppGameContainer app = new AppGameContainer(new ScalableGame(new Game(), WIDTH, HEIGHT, false));
+        screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-        app.setDisplayMode(screenSize.width, screenSize.height, true);
+        app.setDisplayMode(screenSize.width, screenSize.height, false);
         app.setForceExit(false);
         app.setTargetFrameRate(60);
         app.setMaximumLogicUpdateInterval(16);
