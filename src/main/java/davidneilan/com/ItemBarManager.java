@@ -22,16 +22,16 @@ public class ItemBarManager {
         if (x >= barX && x < barX + boxSize && y >= barY && y < barY + boxSize) {
 
             return 1;
-        } else if (x >= barX && x < barX + boxSize * 2 && y >= barY && y < barY + boxSize * 2) {
+        } else if (x >= barX && x < barX + boxSize * 2 && y >= barY && y < barY + boxSize) {
 
             return 2;
-        } else if (x >= barX && x < barX + boxSize * 3 && y >= barY && y < barY + boxSize * 3) {
+        } else if (x >= barX && x < barX + boxSize * 3 && y >= barY && y < barY + boxSize ) {
             return 3;
-        } else if (x >= barX && x < barX + boxSize * 4 && y >= barY && y < barY + boxSize * 4) {
+        } else if (x >= barX && x < barX + boxSize * 4 && y >= barY && y < barY + boxSize ) {
             return 4;
-        } else if (x >= barX && x < barX + boxSize * 5 && y >= barY && y < barY + boxSize * 5) {
+        } else if (x >= barX && x < barX + boxSize * 5 && y >= barY && y < barY + boxSize ) {
             return 5;
-        } else if (x >= barX && x < barX + boxSize * 6 && y >= barY && y < barY + boxSize * 6) {
+        } else if (x >= barX && x < barX + boxSize * 6 && y >= barY && y < barY + boxSize) {
             return 6;
         }
 
