@@ -24,11 +24,14 @@ public class Game extends StateBasedGame {
     }
 
     public void initStatesList(GameContainer container) throws SlickException {
+        addState(new MenuGameState(this));
         addState(new PlayingGameState(this));
+
     }
 
     static Dimension screenSize;
     public static void main(String[] args) throws SlickException {
+
         AppGameContainer app = new AppGameContainer(new ScalableGame(new Game(), WIDTH, HEIGHT, false));
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
