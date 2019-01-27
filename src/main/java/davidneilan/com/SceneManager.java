@@ -70,6 +70,8 @@ public class SceneManager {
         anim.addFrame(new Image("Assets/Sprites/scene-1-door.png"), 1);
         sceneObjs.add(new SceneObject("pawn door", new Color(255, 0, 0), anim));
         sceneObjs.add(new SceneObject("metro", new Color(0, 255, 0), anim));
+
+
         // sceneObjs.add(sceneObj);
         scenes[1] = new Scene(sceneBg, objMap, sceneObjs);
 
@@ -90,6 +92,7 @@ public class SceneManager {
         sceneObjs.add(new SceneObject("back", new Color(72, 0, 255), blankAnim));
         sceneObjs.add(new SceneObject("shop", new Color(255, 0, 0), blankAnim));
         // sceneObjs.add(sceneObj);
+      
         scenes[3] = new Scene(sceneBg, objMap, sceneObjs);
 
         //init scene 5 metro
@@ -100,12 +103,16 @@ public class SceneManager {
         sceneObjs.add(new SceneObject("shop", new Color(255, 0, 110), blankAnim));
         sceneObjs.add(new SceneObject("metro", new Color(255, 216, 0), blankAnim));
         sceneObjs.add(new SceneObject("talk", new Color(0, 255, 33), blankAnim));
+
+
         // sceneObjs.add(sceneObj);
         scenes[4] = new Scene(sceneBg, objMap, sceneObjs);
 
         //scene 6 win
         sceneBg = new Image("Assets/Backgrounds/win.png");
         objMap = new Image("Assets/Sprites/metromap.png");
+
+
 
         sceneObjs = new ArrayList<>();
         scenes[5] = new Scene(sceneBg, objMap, sceneObjs);

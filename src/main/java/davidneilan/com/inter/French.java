@@ -28,10 +28,10 @@ public class French implements Language {
 
         strings.put("SHOP_IN","SALUT:");
         strings.put("SELL_PHONE","VOUS AVEZ BESOIN DE VENTE VOTRE TELEPHONE PORTABLE POUR 1500?");
-        strings.put("BUY","VOULEZ-VOUS ACHETER UN PNEU POUR 200?");
+        strings.put("BUY","VOULEZ-VOUS ACHETER UN PNEU POUR 1923?");
         strings.put("NO_MONEY","JE N'AI PAS LE TEMPS POUR VOUS PAUVRE MEC.");
 
-        strings.put("BUY_TICKET","ACHETER UN BILLET POUR 2000");
+        strings.put("BUY_TICKET","ACHETER UN BILLET POUR 2100");
         strings.put("NEED_TICKET","VOUS AVEZ BESOIN DE PRENDRE UN TICKET DE METRO");
 
         strings.put("METRO_1","SALUT MON PNEU EST CASSÉ J'AI BESOIN DE REPARER");
