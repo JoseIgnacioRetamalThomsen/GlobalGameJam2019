@@ -88,7 +88,7 @@ public class PlayingGameState extends TransferableGameState {
         phone = new Item("Phone", new Image("Assets/Sprites/phone.png"));
         tyre = new Item("Tyre", new Image("Assets/Sprites/tyre.png"));
         tyreIron = new Item("Tyre Iron", new Image("Assets/Sprites/tyreiron.png"));
-        ticket = new Item("Ticket", new Image("Assets/Sprites/tyreiron.png"));
+        ticket = new Item("Ticket", new Image("Assets/Sprites/ticket.png"));
 
         inventory.addItem(phone);
         inventory.setCach(2000);
