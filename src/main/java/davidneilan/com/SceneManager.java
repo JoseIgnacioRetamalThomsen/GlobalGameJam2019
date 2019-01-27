@@ -38,10 +38,18 @@ public class SceneManager {
         sceneObj.addTakableItem(new Item("Key", new Image("Assets/Sprites/key.png")),
                 new ItemScreenPosition(1533, 549, 20));
 
+
+
+
+
         sceneObjInv = new SceneObject("Weapon Placer", Color.red, blankAnim);
 
         sceneObjInv.addTakableItem(new Item("Weapon", new Image("Assets/Sprites/tyreiron.png")),
                 new ItemScreenPosition(1000, 550, 135));
+
+        // add screwdriver
+        sceneObjInv.addTakableItem(new Item("screwdriver", new Image("Assets/Sprites/screwdriver.png")),
+                new ItemScreenPosition(420, 420, 20));
 
         sceneObj.setItemShowingFrame(1);
         sceneObjs.add(sceneObj);
