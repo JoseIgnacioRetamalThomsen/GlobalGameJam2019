@@ -195,7 +195,7 @@ public class PlayingGameState extends TransferableGameState {
             action = itemClicked.getSceneObject().getName();
             sceneManager.showDialog(action, isTextAreaOption, isTextArea);
             System.out.println("Clicked: " + itemClicked.getSceneObject().getName());
-<<<<<<< HEAD
+
             if (itemClicked.getSceneObject().getName().equals("door")) {
 
                 System.out.println("has key " + player.searchItem("Key"));
@@ -213,40 +213,36 @@ public class PlayingGameState extends TransferableGameState {
                     this.textArea.setText(String.format("%s", language.getString("S1_NEEDKEY")));
                 }
                 isTextArea = true;
-            }
+            } else if (itemClicked.getSceneObject().getName().equals("window")) {
 
-            else if( itemClicked.getSceneObject().getName().equals("window") ){
-
-                isTextAreaOption=true;
+                isTextAreaOption = true;
                 this.textArea.setText(String.format("%s %s %s A \n %s %s %s S",
                         language.getString("S1_FOR"),
                         language.getString("S2_WIN_1"),
                         language.getString("S1_PRESS"),
-        if (itemClicked != null) {
-            language.getString("S1_FOR"),
-                    language.getString("S3_WIN_2"),
-                    language.getString("S1_PRESS")
+
+                        language.getString("S3_WIN_2"),
+                        language.getString("S1_PRESS")
                 ));
 
-            isTextArea = true;
-=======
+                isTextArea = true;
+
+
+            } else {
+                System.out.println("Clicked nothing");
+
+            }
+
 
         } else {
             System.out.println("Clicked nothing");
->>>>>>> 3005f107d4153c193ff34d85f4f74ca768fee566
         }
 
 
-    } else {
-        System.out.println("Clicked nothing");
+        inventory.addItem(itemClicked.getItem());
     }
 
-
-
-            inventory.addItem(itemClicked.getItem());
-        }
-
-    }
+}
 
     @Override
     public void mouseReleased(int button, int x, int y) {
@@ -334,11 +330,11 @@ public class PlayingGameState extends TransferableGameState {
                     switch (action) {
                         case "shop":
                             if (key == Input.KEY_B) {
-                                if(inventory.getCash(2000)){
+                                if (inventory.getCash(2000)) {
                                     inventory.addItem(ticket);
                                     isTextAreaOption = false;
                                     isTextArea = false;
-                                }else{
+                                } else {
                                     textArea.setText(PlayingGameState.language.getString("NO_MONEY"));
                                 }
                             }
