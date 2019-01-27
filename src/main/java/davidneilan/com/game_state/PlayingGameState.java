@@ -195,13 +195,53 @@ public class PlayingGameState extends TransferableGameState {
             action = itemClicked.getSceneObject().getName();
             sceneManager.showDialog(action, isTextAreaOption, isTextArea);
             System.out.println("Clicked: " + itemClicked.getSceneObject().getName());
+<<<<<<< HEAD
+            if (itemClicked.getSceneObject().getName().equals("door")) {
+
+                System.out.println("has key " + player.searchItem("Key"));
+                if (inventory.hasItem("Key")) {
+                    isTextAreaOption = true;
+                    this.textArea.setText(String.format("%s %s %s A \n %s %s %s S",
+                            language.getString("S1_FOR"),
+                            language.getString("S6_DOOR_2"),
+                            language.getString("S1_PRESS"),
+                            language.getString("S1_FOR"),
+                            language.getString("S6_DOOR_2"),
+                            language.getString("S5_DOOR_1")
+                    ));
+                } else {
+                    this.textArea.setText(String.format("%s", language.getString("S1_NEEDKEY")));
+                }
+                isTextArea = true;
+            }
+
+            else if( itemClicked.getSceneObject().getName().equals("window") ){
+
+                isTextAreaOption=true;
+                this.textArea.setText(String.format("%s %s %s A \n %s %s %s S",
+                        language.getString("S1_FOR"),
+                        language.getString("S2_WIN_1"),
+                        language.getString("S1_PRESS"),
+        if (itemClicked != null) {
+            language.getString("S1_FOR"),
+                    language.getString("S3_WIN_2"),
+                    language.getString("S1_PRESS")
+                ));
+
+            isTextArea = true;
+=======
 
         } else {
             System.out.println("Clicked nothing");
+>>>>>>> 3005f107d4153c193ff34d85f4f74ca768fee566
         }
 
 
-        if (itemClicked != null) {
+    } else {
+        System.out.println("Clicked nothing");
+    }
+
+
 
             inventory.addItem(itemClicked.getItem());
         }
