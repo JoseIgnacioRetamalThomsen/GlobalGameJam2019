@@ -112,8 +112,8 @@ public class Player {
     public void moveTo(Position position) {
         if( (int)position.getX() == 0 && (int)position.getY() == 0 ){ return; }
 
-        double distX = Math.abs(getPosition().getX() - position.getX());
-        double distY = Math.abs(getPosition().getY() - position.getY());
+        double distX = position.getX() - getPosition().getX();
+        double distY = position.getY() - getPosition().getY();
 
         double distXY = Math.sqrt(distX * distX + distY * distY);
 
@@ -122,5 +122,9 @@ public class Player {
         }
 
         this.movementComponent.moveTo(position);
+    }
+
+    public MovementComponent getMovementComponent() {
+        return movementComponent;
     }
 }
