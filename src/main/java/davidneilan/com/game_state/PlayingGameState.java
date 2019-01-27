@@ -343,6 +343,11 @@ public class PlayingGameState extends TransferableGameState {
 
             }
         }
+
+        // esc for on screen menu
+        if( key == Input.KEY_ESCAPE ){
+            System.exit(1);
+        }
     }
 
 }
