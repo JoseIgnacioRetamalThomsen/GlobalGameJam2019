@@ -1,5 +1,6 @@
 package davidneilan.com;
 
+import davidneilan.com.game_state.PlayingGameState;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -63,6 +64,10 @@ public class Scene {
 
         for (SceneObject obj : sceneObjects) {
             obj.render(g);
+        }
+
+        if (PlayingGameState.debug) {
+            objectMap.draw(0, 0, new Color(255, 255, 255, 150));
         }
     }
 }

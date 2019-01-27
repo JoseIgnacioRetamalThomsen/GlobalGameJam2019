@@ -143,13 +143,6 @@ public class PlayingGameState extends TransferableGameState {
         if (debug) {
             g.setColor(Color.red);
             g.drawString(String.format("Mouse at: x=%d,y=%d", mouseX, mouseY), 20, 20);
-
-            g.drawString(xScaled + " " + yScaled + " " + 135, 50, 50);
-            g.drawString("Box clicked: " + clickedBox, 50, 70);
-
-            //say gelow
-            g.setColor(Color.blue);
-            g.drawString(" " + language.getString("S1_KNOCK"), 600, 600);
         }
 
         // render player movement
