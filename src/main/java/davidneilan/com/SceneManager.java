@@ -222,7 +222,21 @@ public class SceneManager {
                             PlayingGameState.language.getString("S1_PRESS")));
 
                 } else if (name.equals("talk")) {
+                    PlayingGameState.isTextArea = true;
 
+                    if(PlayingGameState.inventory.hasItem("Tyre")){
+                        PlayingGameState.textArea.setText(String.format("%S %n %S  G %s ",
+                                PlayingGameState.language.getString("METRO_G"),
+                                PlayingGameState.language.getString("S1_PRESS"),
+                                PlayingGameState.language.getString("METRO_V")
+
+
+
+                        ));
+                        PlayingGameState.isTextAreaOption = true;
+                    }else {
+                        PlayingGameState.textArea.setText(PlayingGameState.language.getString("METRO_1"));
+                    }
                 }
         }
     }
