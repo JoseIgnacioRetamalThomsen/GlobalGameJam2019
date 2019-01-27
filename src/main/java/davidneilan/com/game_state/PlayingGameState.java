@@ -116,8 +116,6 @@ public class PlayingGameState extends TransferableGameState {
         Input input = gc.getInput();
         debug = input.isKeyDown(DEBUG_BUTTON);
 
-        if (x1 > 400 && x1 < 1620 && y1 > 430 && y1 < 970)
-            this.player.moveTo(Position.of(x1, y1));
         this.player.update();
     }
 
@@ -136,7 +134,7 @@ public class PlayingGameState extends TransferableGameState {
        // g.drawString(" " + language.getString("S0_GREET"), 600, 600);
 
 
-        if (PlayingGameState.debug) {
+        if (debug) {
             g.setColor(Color.red);
             g.drawString(String.format("Mouse at: x=%d,y=%d", mouseX, mouseY), 20, 20);
 
@@ -160,7 +158,17 @@ public class PlayingGameState extends TransferableGameState {
             textArea.render(g);
         }
 
+        if (debug) {
+            g.setColor(Color.red);
+            g.fillRect((int) player.getMovementComponent().getTargetPos().getX() - 5,
+                    (int) player.getMovementComponent().getTargetPos().getY() - 5,
+                    10, 10);
 
+            g.setColor(Color.green);
+            g.fillRect((int) player.getMovementComponent().getCurrentPos().getX() - 5,
+                    (int) player.getMovementComponent().getCurrentPos().getY() - 5,
+                    10, 10);
+        }
     }
 
     @Override
@@ -211,6 +219,9 @@ public class PlayingGameState extends TransferableGameState {
 
             inventory.addItem(itemClicked.getItem());
         }
+
+        if (x1 > 400 && x1 < 1620 && y1 > 430 && y1 < 970)
+            this.player.moveTo(Position.of(x1, y1));
 
     }
 

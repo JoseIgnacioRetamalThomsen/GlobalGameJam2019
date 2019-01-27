@@ -17,7 +17,7 @@ public class MovementComponent {
 
     public void moveTo(Position pos){
         this.targetPos = Position.of(pos);
-        angle = Math.atan2(targetPos.getY() - currentPos.getY(), targetPos.getX() - currentPos.getX()) * 180 / Math.PI;
+        angle = Math.atan2(targetPos.getY() - currentPos.getY(), targetPos.getX() - currentPos.getX());
     }
 
     public Position getCurrentPos() {
