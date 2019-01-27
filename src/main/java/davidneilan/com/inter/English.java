@@ -21,6 +21,16 @@ public class English implements Language {
         strings.put("S8_PICK_KEY_1","FIND THE KEY");
         strings.put("S8_PICK_KEY_2","PICK THE KEY");
         strings.put("S1_NEEDKEY","YOU NEED A KEY");
+
+        strings.put("S2_TALKS","YOU LUCKY GOT A WEAPON, WE WILL GET YOU LATER ANIWAY....");
+        strings.put("S2_GAMEOVER","WE CATCH YOU.... GAME OVER...");
+
+        strings.put("SHOP_IN","HELLO:");
+        strings.put("SELL_PHONE","WANT TO SELL YOUR PHONE FOR 1500");
+        strings.put("BUY","WANT TO BUY A TYRE FOR 2000");
+        strings.put("NO_MONEY","I DON'T HAVE TIME FOR YOU POOR BEAST");
+
+
     }
 
 
