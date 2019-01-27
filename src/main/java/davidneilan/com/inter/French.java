@@ -36,6 +36,8 @@ public class French implements Language {
 
         strings.put("METRO_1","SALUT MON PNEU EST CASSÉ J'AI BESOIN DE REPARER");
         strings.put("METRO_2","OOH, EJ VOIR VOU AVEZ UN PNEU, POUVEZ VOUS ME DONNER? ");
+        strings.put("METRO_3","POUR DONNER LE PNEU ");
+        strings.put("METRO_4","MERCI, PREDRE CA... ");
     }
 
 

@@ -36,6 +36,8 @@ public class Spanish implements Language {
 
         strings.put("METRO_1","HOLA, MI LLANTA ESTA QUEBRADA NECESITO ARREGLARLA.");
         strings.put("METRO_2","OOH, TIENES UN NEUMATICO, PUEDES DÁRMELO? ");
+        strings.put("METRO_3","PARA REGALER EL NEUMATICO ");
+        strings.put("METRO_4","GRACIAS, TOMA ESTO... ");
     }
 
 
