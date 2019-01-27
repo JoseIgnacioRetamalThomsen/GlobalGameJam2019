@@ -184,6 +184,8 @@ public class SceneManager {
 
                     }
 
+                    text+= String.format("%s %s B %n",PlayingGameState.language.getString("BUY"),PlayingGameState.language.getString("S1_PRESS"));
+
                     PlayingGameState.textArea.setText(text);
 
                 } else if (name.equals("back")) {

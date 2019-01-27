@@ -89,7 +89,7 @@ public class PlayingGameState extends TransferableGameState {
         tyreIron = new Item("Tyre Iron", new Image("Assets/Sprites/tyreiron.png"));
 
         inventory.addItem(phone);
-        inventory.setCach(200);
+        inventory.setCach(2000);
 /*
         inventory.addItem(key);
         inventory.addItem(phone);
@@ -275,6 +275,15 @@ public class PlayingGameState extends TransferableGameState {
                                 inventory.removeItem(slot+1);
                                 isTextAreaOption = false;
                                 isTextArea = false;
+                            }else if(key ==Input.KEY_B){
+                                if(inventory.getCash(2000)){
+                                    inventory.addItem(tyre);
+                                    isTextAreaOption = false;
+                                    isTextArea = false;
+
+                                }else{
+                                    textArea.setText(PlayingGameState.language.getString("NO_MONEY"));
+                                }
                             }
                     }
                     break;

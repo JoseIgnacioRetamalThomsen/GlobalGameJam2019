@@ -27,6 +27,10 @@ public class English implements Language {
 
         strings.put("SHOP_IN","HELLO:");
         strings.put("SELL_PHONE","WANT TO SELL YOUR PHONE FOR 1500");
+        strings.put("BUY","WANT TO BUY A TYRE FOR 2000");
+        strings.put("NO_MONEY","I DON'T HAVE TIME FOR YOU POOR BEAST");
+
+
     }
 
 
