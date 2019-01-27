@@ -30,6 +30,13 @@ public class English implements Language {
         strings.put("BUY","WANT TO BUY A TYRE FOR 2000");
         strings.put("NO_MONEY","I DON'T HAVE TIME FOR YOU POOR BEAST");
 
+<<<<<<< HEAD
+=======
+        strings.put("BUY_TICKET","BUY A TICKET FOR 2000");
+
+        strings.put("NEED_TICKET","YOU NEED A TICKER FOR GET THE METRO");
+
+>>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
 
     }
 
