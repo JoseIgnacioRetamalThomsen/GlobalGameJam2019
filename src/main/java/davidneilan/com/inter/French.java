@@ -9,7 +9,9 @@ public class French implements Language {
 
     public French() {
         strings.put("S0_GREET", "SALUT");
-        strings.put("S1_KNOCK", "KOCK, KNOCK, KNOCK!!");
+        strings.put("S1_FOR","POUR");
+        strings.put("S1_PRESS","APPUYER");
+        strings.put("S1_KNOCK", "TOC ,TOC, TOC QUELQU'UN EST A LA PORTE ET VEUT M'ATTAQUER!!!");
         strings.put("S2_WIN_1","REGARDER LA FENETRE");
         strings.put("S3_WIN_2","OUVREZ LA FENÊTRE ");
         strings.put("S4_WIN_3","FERME LA FENÊTRE ");
@@ -18,6 +20,16 @@ public class French implements Language {
         strings.put("S7_DOOR_3","FERME LA FENÊTRE");
         strings.put("S8_PICK_KEY_1","TROUVE LA CLÉ");
         strings.put("S8_PICK_KEY_2","PRENEZ LA CLE");
+
+        strings.put("S1_NEEDKEY","YOU NEED A KEY");
+
+        strings.put("S2_TALKS","VOUS ETES CHANCEUX DE TROUVEZ UNE ARME, NOUS VOUS TROUVERONS PLUS TARD....");
+        strings.put("S2_GAMEOVER","NOUS VOUS AVONS ATTRAPE!.... LA FIN...");
+
+        strings.put("SHOP_IN","SALUT:");
+        strings.put("SELL_PHONE","VOUS AVEZ BESOIN DE VENTE VOTRE TELEPHONE PORTABLE POUR 1500?");
+        strings.put("BUY","VOULEZ-VOUS ACHETER UN PNEU POUR 200?");
+        strings.put("NO_MONEY","JE N'AI PAS LE TEMPS POUR VOUS PAUVRE MEC.");
     }
 
 
