@@ -19,6 +19,8 @@ public class Game extends StateBasedGame {
     private static final int HEIGHT = 1080;
     private static final String GAME_NAME = "Hard Way Home";
 
+    public static long startTime, endTime = 0;
+
     public Game() {
         super(GAME_NAME);
     }

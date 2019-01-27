@@ -62,6 +62,7 @@ public class MenuGameState extends TransferableGameState {
                     PlayingGameState.language = new Spanish();
                     break;
             }
+            Game.startTime = System.currentTimeMillis();
             enterState(1);
             PlayingGameState.langaugeStatic=buttonClick;
 

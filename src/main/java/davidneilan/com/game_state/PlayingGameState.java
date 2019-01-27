@@ -119,7 +119,9 @@ public class PlayingGameState extends TransferableGameState {
 
 
         //tv.draw(1190,270);
-
+        if (SceneManager.currentScene == 5 && Game.endTime == 0) {
+            Game.endTime = System.currentTimeMillis();
+        }
     }
 
     public static boolean isTextArea = true;
@@ -171,6 +173,17 @@ public class PlayingGameState extends TransferableGameState {
 
        // tv.getAnim().draw(1000,270);
 
+        long timeOffset;
+        if (Game.endTime == 0) {
+            timeOffset = System.currentTimeMillis() - Game.startTime;
+
+        }
+        else {
+            timeOffset = Game.endTime - Game.startTime;
+        }
+
+        double timeTaken = timeOffset / 1000d;
+        g.drawString(String.format("Time: %.2f", timeTaken), 100, 100);
     }
 
     @Override
