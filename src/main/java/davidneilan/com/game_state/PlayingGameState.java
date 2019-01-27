@@ -213,31 +213,21 @@ public class PlayingGameState extends TransferableGameState {
                     this.textArea.setText(String.format("%s", language.getString("S1_NEEDKEY")));
                 }
                 isTextArea = true;
-<<<<<<< HEAD
-            }
 
-            else if( itemClicked.getSceneObject().getName().equals("window") ){
-=======
             } else if (itemClicked.getSceneObject().getName().equals("window")) {
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
 
                 isTextAreaOption = true;
                 this.textArea.setText(String.format("%s %s %s A \n %s %s %s S",
                         language.getString("S1_FOR"),
                         language.getString("S2_WIN_1"),
                         language.getString("S1_PRESS"),
-<<<<<<< HEAD
-=======
 
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
                         language.getString("S3_WIN_2"),
                     language.getString("S3_WIN_2"),
                     language.getString("S1_PRESS")
                 ));
 
-<<<<<<< HEAD
-            isTextArea = true;
-=======
+
                 isTextArea = true;
 
 
@@ -246,23 +236,9 @@ public class PlayingGameState extends TransferableGameState {
 
             }
 
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
 
-
-
-<<<<<<< HEAD
-    } else {
-        System.out.println("Clicked nothing");
-    }
-
-
-
-            inventory.addItem(itemClicked.getItem());
-        }
-
-=======
         inventory.addItem(itemClicked.getItem());
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
+
     }
 
 }
@@ -324,48 +300,29 @@ public class PlayingGameState extends TransferableGameState {
                     }
                     break;
 
-<<<<<<< HEAD
-                    //pawn shop
-                case 3:
-                    switch(action){
-                        case "shop":
-                            System.out.println("shoppppppp");
-=======
+
                 //pawn shop
                 case 3:
                     switch (action) {
                         case "shop":
 
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
+
                             if (key == Input.KEY_S) {
                                 inventory.addCash(1500);
                                 int slot = inventory.getItemSlot("Phone");
                                 System.out.println(slot);
-<<<<<<< HEAD
-                                inventory.removeItem(slot+1);
-                                isTextAreaOption = false;
-                                isTextArea = false;
-                            }else if(key ==Input.KEY_B){
-                                if(inventory.getCash(2000)){
-=======
+
                                 inventory.removeItem(slot + 1);
                                 isTextAreaOption = false;
                                 isTextArea = false;
                             } else if (key == Input.KEY_B) {
                                 if (inventory.getCash(2000)) {
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
+
                                     inventory.addItem(tyre);
                                     isTextAreaOption = false;
                                     isTextArea = false;
 
-<<<<<<< HEAD
-                                }else{
-                                    textArea.setText(PlayingGameState.language.getString("NO_MONEY"));
-                                }
-                            }
-                    }
-                    break;
-=======
+
                                 } else {
                                     textArea.setText(PlayingGameState.language.getString("NO_MONEY"));
                                 }
@@ -390,7 +347,7 @@ public class PlayingGameState extends TransferableGameState {
                     break;
 
 
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
+
             }
         }
     }

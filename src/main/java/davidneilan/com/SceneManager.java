@@ -14,11 +14,9 @@ public class SceneManager {
     public static int currentScene;
 
     public void init() throws SlickException {
-<<<<<<< HEAD
-        scenes = new Scene[5];
-=======
+
         scenes = new Scene[6];
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
+
         currentScene = 0;
 
         List<SceneObject> sceneObjs;
@@ -64,15 +62,11 @@ public class SceneManager {
         sceneObjs = new ArrayList<>();
         anim = new Animation();
         anim.addFrame(new Image("Assets/Sprites/scene-1-door.png"), 1);
-<<<<<<< HEAD
-        sceneObjs.add(new SceneObject("pawn door",new Color(255, 0, 0), anim));
-        sceneObjs.add( new SceneObject("metro", new Color(0, 255, 0), anim));
-       // sceneObjs.add(sceneObj);
-=======
+
         sceneObjs.add(new SceneObject("pawn door", new Color(255, 0, 0), anim));
         sceneObjs.add(new SceneObject("metro", new Color(0, 255, 0), anim));
         // sceneObjs.add(sceneObj);
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
+
         scenes[1] = new Scene(sceneBg, objMap, sceneObjs);
 
         //init scene 3 bad guys after door
@@ -82,11 +76,9 @@ public class SceneManager {
         sceneObjs = new ArrayList<>();
         sceneObjs.add(new SceneObject("go", new Color(255, 0, 0), blankAnim));
         sceneObjs.add(new SceneObject("talk", new Color(255, 216, 0), blankAnim));
-<<<<<<< HEAD
-       // sceneObjs.add(sceneObj);
-=======
+
         // sceneObjs.add(sceneObj);
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
+
         scenes[2] = new Scene(sceneBg, objMap, sceneObjs);
 
         //init scene 4 pawn show
@@ -95,11 +87,9 @@ public class SceneManager {
         sceneObjs = new ArrayList<>();
         sceneObjs.add(new SceneObject("back", new Color(72, 0, 255), blankAnim));
         sceneObjs.add(new SceneObject("shop", new Color(255, 0, 0), blankAnim));
-<<<<<<< HEAD
-       // sceneObjs.add(sceneObj);
-=======
+
         // sceneObjs.add(sceneObj);
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
+
         scenes[3] = new Scene(sceneBg, objMap, sceneObjs);
 
         //init scene 5 metro
@@ -108,13 +98,7 @@ public class SceneManager {
 
         sceneObjs.add(new SceneObject("back", new Color(0, 38, 255), blankAnim));
         sceneObjs.add(new SceneObject("shop", new Color(255, 0, 110), blankAnim));
-<<<<<<< HEAD
-        sceneObjs.add(new SceneObject("metro", new Color(255, 0, 0), blankAnim));
-        sceneObjs.add(new SceneObject("talk", new Color(0, 255, 33), blankAnim));
-       // sceneObjs.add(sceneObj);
-        scenes[4] = new Scene(sceneBg, objMap, sceneObjs);
 
-=======
         sceneObjs.add(new SceneObject("metro", new Color(255, 216, 0), blankAnim));
         sceneObjs.add(new SceneObject("talk", new Color(0, 255, 33), blankAnim));
         // sceneObjs.add(sceneObj);
@@ -127,7 +111,7 @@ public class SceneManager {
         sceneObjs = new ArrayList<>();
         scenes[5] = new Scene(sceneBg, objMap, sceneObjs);
 
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
+
     }
 
     public void render(Graphics g) throws SlickException {
@@ -181,11 +165,9 @@ public class SceneManager {
             case 1:
                 if (name.equals("pawn door")) {
                     PlayingGameState.sceneManager.goToScene(3);
-<<<<<<< HEAD
-                }else if(name.equals("metro")){
-=======
+
                 } else if (name.equals("metro")) {
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
+
                     PlayingGameState.sceneManager.goToScene(4);
                 }
                 break;
@@ -214,16 +196,7 @@ public class SceneManager {
 
                     PlayingGameState.isTextAreaOption = true;
                     PlayingGameState.isTextArea = true;
-<<<<<<< HEAD
-                    String text = String.format("%s %n",PlayingGameState.language.getString("SHOP_IN"));
 
-                    if(PlayingGameState.inventory.hasItem("Phone")){
-                        text += String.format("%s %s S %n",PlayingGameState.language.getString("SELL_PHONE"),PlayingGameState.language.getString("S1_PRESS"));
-
-                    }
-
-                    text+= String.format("%s %s B %n",PlayingGameState.language.getString("BUY"),PlayingGameState.language.getString("S1_PRESS"));
-=======
                     String text = String.format("%s %n", PlayingGameState.language.getString("SHOP_IN"));
 
                     if (PlayingGameState.inventory.hasItem("Phone")) {
@@ -232,7 +205,7 @@ public class SceneManager {
                     }
 
                     text += String.format("%s %s B %n", PlayingGameState.language.getString("BUY"), PlayingGameState.language.getString("S1_PRESS"));
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
+
 
                     PlayingGameState.textArea.setText(text);
 
@@ -241,15 +214,7 @@ public class SceneManager {
                 }
                 break;
             case 4:
-<<<<<<< HEAD
-                if(name.equals("metro")){
-                    System.out.println("metro");
-                }else if(name.equals("back")){
-                    PlayingGameState.sceneManager.goToScene(1);
-                }else if(name.equals("shop")){
 
-                }else if(name.equals("talk")){
-=======
                 if (name.equals("metro")) {
 
                    if(PlayingGameState.inventory.hasItem("Ticket")){
@@ -272,7 +237,7 @@ public class SceneManager {
                             PlayingGameState.language.getString("S1_PRESS")));
 
                 } else if (name.equals("talk")) {
->>>>>>> 8df50a4c74ce7847137d2b8df97e03ef21034e1e
+
 
                 }
         }
