@@ -35,6 +35,7 @@ public class PlayingGameState extends TransferableGameState {
     Item phone;
     Item tyre;
     Item tyreIron;
+    Item ticket;
 
     public static Language language = new English();
 
@@ -87,6 +88,7 @@ public class PlayingGameState extends TransferableGameState {
         phone = new Item("Phone", new Image("Assets/Sprites/phone.png"));
         tyre = new Item("Tyre", new Image("Assets/Sprites/tyre.png"));
         tyreIron = new Item("Tyre Iron", new Image("Assets/Sprites/tyreiron.png"));
+        ticket = new Item("Ticket", new Image("Assets/Sprites/tyreiron.png"));
 
         inventory.addItem(phone);
         inventory.setCach(2000);
@@ -263,30 +265,48 @@ public class PlayingGameState extends TransferableGameState {
                     }
                     break;
 
-                    //pawn shop
+                //pawn shop
                 case 3:
-                    switch(action){
+                    switch (action) {
                         case "shop":
-                            System.out.println("shoppppppp");
+
                             if (key == Input.KEY_S) {
                                 inventory.addCash(1500);
                                 int slot = inventory.getItemSlot("Phone");
                                 System.out.println(slot);
-                                inventory.removeItem(slot+1);
+                                inventory.removeItem(slot + 1);
                                 isTextAreaOption = false;
                                 isTextArea = false;
-                            }else if(key ==Input.KEY_B){
-                                if(inventory.getCash(2000)){
+                            } else if (key == Input.KEY_B) {
+                                if (inventory.getCash(2000)) {
                                     inventory.addItem(tyre);
                                     isTextAreaOption = false;
                                     isTextArea = false;
 
-                                }else{
+                                } else {
                                     textArea.setText(PlayingGameState.language.getString("NO_MONEY"));
                                 }
                             }
                     }
                     break;
+                //metro
+                case 4:
+                    switch (action) {
+                        case "shop":
+                            if (key == Input.KEY_B) {
+                                if(inventory.getCash(2000)){
+                                    inventory.addItem(ticket);
+                                    isTextAreaOption = false;
+                                    isTextArea = false;
+                                }else{
+                                    textArea.setText(PlayingGameState.language.getString("NO_MONEY"));
+                                }
+                            }
+                            break;
+                    }
+                    break;
+
+
             }
         }
     }
