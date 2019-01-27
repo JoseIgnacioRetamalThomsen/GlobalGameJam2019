@@ -43,7 +43,7 @@ public class Scene {
                     ItemScreenPosition pos = posList.get(i);
 
                     Rectangle bounds = new Rectangle(pos.getX(), pos.getY(),
-                            pos.getX() + pos.getDrawSize(), pos.getY() + pos.getDrawSize());
+                            pos.getDrawSize(), pos.getDrawSize());
 
                     if (bounds.contains(clickX, clickY)) {
                         items.remove(i);
