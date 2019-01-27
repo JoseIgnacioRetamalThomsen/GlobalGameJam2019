@@ -26,7 +26,7 @@ public class MenuGameState extends TransferableGameState {
       images[0] = new Image("Assets/Sprites/UK.png");
       images[1] = new Image("Assets/Sprites/FR.png");
       images[2] = new Image("Assets/Sprites/ES.png");
-        buttons = new ButtonSet(languages,10,10,90,54, Color.gray,Color.cyan,images,5);
+        buttons = new ButtonSet(languages,915,300,90,54, Color.gray,Color.cyan,images,5);
 
     }
 
