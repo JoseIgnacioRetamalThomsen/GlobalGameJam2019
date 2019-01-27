@@ -27,15 +27,17 @@ public class English implements Language {
         strings.put("S2_GAMEOVER","WE GOT YOU.... GAME OVER...");
 
         strings.put("SHOP_IN","HELLO:");
-        strings.put("SELL_PHONE","DO YOU WANT TO SELL YOUR PHONE FOR 1500 ?");
-        strings.put("BUY","DO YOU WANT TO BUY A TYRE FOR 2000?");
+        strings.put("SELL_PHONE","DO YOU WANT TO SELL YOUR PHONE FOR 2154 ?");
+        strings.put("BUY","DO YOU WANT TO BUY A TYRE FOR 1919?");
         strings.put("NO_MONEY","I DON'T HAVE TIME FOR YOU POOR FELLOW");
 
-        strings.put("BUY_TICKET","BUY A TICKET FOR 2000");
+        strings.put("BUY_TICKET","BUY A TICKET FOR 2123");
 
         strings.put("NEED_TICKET","YOU NEED A TICKER FOR GET THE METRO");
         strings.put("METRO_1","HI MY TYRE IS BROKEN, CAN YOU HELP ME?");
         strings.put("METRO_2","OOH, I SEE YOU HAVE A TYRE, CAN I HAVE IT? ");
+        strings.put("METRO_3","FOR GIVE THE TYRE ");
+        strings.put("METRO_4","THANKS!!! TAKE THIS... ");
 
 
     }
