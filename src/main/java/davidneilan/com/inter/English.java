@@ -12,7 +12,7 @@ public class English implements Language {
         strings.put("S1_FOR","FOR");
         strings.put("S1_PRESS","PRESS");
         strings.put("S1_KNOCK", "KONCK KNOCK, SOMEONE IS AT THE DOOR, I AM IN TROUBLE I HAVE TO GO HOME");
-        strings.put("S2_WIN_1","GOT TO THE WINDOW");
+        strings.put("S2_WIN_1","GO OUT THROUHT THE WINDOW");
         strings.put("S3_WIN_2","OPEN THE WINDOW");
         strings.put("S4_WIN_3","CLOSE THE WINDOW");
         strings.put("S5_DOOR_1","IGNORE THE DOOR");
@@ -34,8 +34,8 @@ public class English implements Language {
         strings.put("BUY_TICKET","BUY A TICKET FOR 2000");
 
         strings.put("NEED_TICKET","YOU NEED A TICKER FOR GET THE METRO");
-
-        strings.put("METRO_1","HI MY TYRE, CAN YOU HELP ME?");
+        strings.put("METRO_1","HI MY TYRE IS BROKEN I NEED TO FIX IT");
+        strings.put("METRO_2","OOH, I SEE YOU HAVE A TYRE, CAN I HAVE IT? ");
 
 
     }

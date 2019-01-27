@@ -12,12 +12,12 @@ public class French implements Language {
         strings.put("S1_FOR","POUR");
         strings.put("S1_PRESS","APPUYER");
         strings.put("S1_KNOCK", "TOC ,TOC, TOC QUELQU'UN EST A LA PORTE, JE SUIS DANS LA MERDE, JE DOIS RENTRER À LA MAISON.");
-        strings.put("S2_WIN_1","REGARDER LA FENETRE");
+        strings.put("S2_WIN_1","SORTEZ PAR LA FENÊTRE");
         strings.put("S3_WIN_2","OUVREZ LA FENÊTRE ");
         strings.put("S4_WIN_3","FERME LA FENÊTRE ");
-        strings.put("S5_DOOR_1","IGNOREZ LA FENÊTRE");
-        strings.put("S6_DOOR_2","OUVEREZ LA FENÊTRE");
-        strings.put("S7_DOOR_3","FERME LA FENÊTRE");
+        strings.put("S5_DOOR_1","IGNOREZ LA PORTE");
+        strings.put("S6_DOOR_2","OUVEREZ LA PORTE");
+        strings.put("S7_DOOR_3","FERME LA PORTE");
         strings.put("S8_PICK_KEY_1","TROUVE LA CLÉ");
         strings.put("S8_PICK_KEY_2","PRENEZ LA CLÉ");
 
@@ -33,6 +33,9 @@ public class French implements Language {
 
         strings.put("BUY_TICKET","ACHETER UN BILLET POUR 2000");
         strings.put("NEED_TICKET","VOUS AVEZ BESOIN DE PRENDRE UN TICKET DE METRO");
+
+        strings.put("METRO_1","SALUT MON PNEU EST CASSÉ J'AI BESOIN DE REPARER");
+        strings.put("METRO_2","OOH, EJ VOIR VOU AVEZ UN PNEU, POUVEZ VOUS ME DONNER? ");
     }
 
 
