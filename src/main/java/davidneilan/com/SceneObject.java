@@ -56,7 +56,7 @@ public class SceneObject {
                 Item item = items.get(i);
                 ItemScreenPosition pos = itemPosList.get(i);
                 item.getIcon().draw(pos.getX(), pos.getY(),
-                        ((float) pos.getDrawSize() / item.getIcon().getWidth()));
+                        ((float) pos.getDrawSize() /item.getIcon().getWidth()));
             }
         }
     }

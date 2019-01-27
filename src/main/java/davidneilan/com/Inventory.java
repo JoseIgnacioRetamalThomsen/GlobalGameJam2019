@@ -116,6 +116,18 @@ public class Inventory {
         }
         return false;
     }
+    public int getItemSlot(String itemName){
+        int count=0;
+        for (Item items : items.values()) {
+            if(items !=null) {
+                if (items.getName().equals(itemName)) return count;
+
+
+            }
+            count++;
+        }
+        return -1;
+    }
     /**
      * Return the clicked box number from 1 to 6 , minus 1 if is not insede
      *
