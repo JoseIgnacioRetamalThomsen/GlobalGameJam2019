@@ -23,13 +23,13 @@ public class PlayingGameState extends TransferableGameState {
     private int barX = 556, barY = 925;
 
     // private Image imgBar;
-    private Player player;
+    public static Player player;
 
-    private TextArea textArea = new TextArea();
+    public static TextArea textArea = new TextArea();
 
-    Inventory inventory;
+    public static Inventory inventory;
 
-    private SceneManager sceneManager;
+    public static SceneManager sceneManager;
 
     Item key;
     Item phone;
@@ -88,6 +88,8 @@ public class PlayingGameState extends TransferableGameState {
         tyre = new Item("Tyre", new Image("Assets/Sprites/tyre.png"));
         tyreIron = new Item("Tyre Iron", new Image("Assets/Sprites/tyreiron.png"));
 
+        inventory.addItem(phone);
+        inventory.setCach(200);
 /*
         inventory.addItem(key);
         inventory.addItem(phone);
@@ -112,8 +114,8 @@ public class PlayingGameState extends TransferableGameState {
         this.player.update();
     }
 
-    boolean isTextArea = true;
-    boolean isTextAreaOption = false;
+    public static boolean isTextArea = true;
+    public static boolean isTextAreaOption = false;
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -165,6 +167,8 @@ public class PlayingGameState extends TransferableGameState {
     int x1, y1;
     int clickedBox;
 
+    public static String action = "";
+
     @Override
     public void mousePressed(int button, int x, int y) {
         x1 = x;
@@ -186,41 +190,9 @@ public class PlayingGameState extends TransferableGameState {
         ClickedObjects itemClicked = sceneManager.onSceneClick(x, y);
 
         if (itemClicked.hasSceneObject()) {
+            action = itemClicked.getSceneObject().getName();
+            sceneManager.showDialog(action, isTextAreaOption, isTextArea);
             System.out.println("Clicked: " + itemClicked.getSceneObject().getName());
-            if (itemClicked.getSceneObject().getName().equals("door")) {
-
-                System.out.println("has key " + player.searchItem("Key"));
-                if (inventory.hasItem("Key")) {
-                    isTextAreaOption = true;
-                    this.textArea.setText(String.format("%s %s %s A \n %s %s %s S",
-                            language.getString("S1_FOR"),
-                            language.getString("S6_DOOR_2"),
-                            language.getString("S1_PRESS"),
-                            language.getString("S1_FOR"),
-                            language.getString("S6_DOOR_2"),
-                            language.getString("S5_DOOR_1")
-                    ));
-                } else {
-                    this.textArea.setText(String.format("%s", language.getString("S1_NEEDKEY")));
-                }
-                isTextArea = true;
-            }
-
-            else if( itemClicked.getSceneObject().getName().equals("window") ){
-
-                isTextAreaOption=true;
-                this.textArea.setText(String.format("%s %s %s A \n %s %s %s S",
-                        language.getString("S1_FOR"),
-                        language.getString("S2_WIN_1"),
-                        language.getString("S1_PRESS"),
-                        language.getString("S1_FOR"),
-                        language.getString("S3_WIN_2"),
-                        language.getString("S1_PRESS")
-                ));
-
-                isTextArea = true;
-            }
-
 
         } else {
             System.out.println("Clicked nothing");
@@ -254,14 +226,58 @@ public class PlayingGameState extends TransferableGameState {
         }
 
         if (isTextAreaOption) {
-            if (key == Input.KEY_A) {
-                System.out.println("Working");
-                sceneManager.goToScene(1);
-                isTextAreaOption = false;
-                isTextArea = false;
-            } else if (key == Input.KEY_S) {
-                isTextAreaOption = false;
-                isTextArea = false;
+            switch (SceneManager.currentScene) {
+                case 0:
+                    switch (action) {
+                        case "door":
+                            if (key == Input.KEY_A) {
+                                System.out.println("Working");
+                                sceneManager.goToScene(2);
+                                isTextAreaOption = false;
+                                isTextArea = false;
+                            } else if (key == Input.KEY_S) {
+                                isTextAreaOption = false;
+                                isTextArea = false;
+                            }
+                            break;
+
+                        case "window":
+                            if (key == Input.KEY_A) {
+
+                                sceneManager.goToScene(1);
+                                isTextAreaOption = false;
+                                isTextArea = false;
+                            } else if (key == Input.KEY_S) {
+                                isTextAreaOption = false;
+                                isTextArea = false;
+                            }
+                            break;
+                    }
+                    break;
+                //bad guys
+                case 2:
+                    switch (action) {
+                        case "go":
+                            sceneManager.goToScene(1);
+                            break;
+                    }
+                    break;
+
+                    //pawn shop
+                case 3:
+                    switch(action){
+                        case "shop":
+                            System.out.println("shoppppppp");
+                            if (key == Input.KEY_S) {
+                                inventory.addCash(1500);
+                                int slot = inventory.getItemSlot("Phone");
+                                System.out.println(slot);
+                                inventory.removeItem(slot+1);
+                                isTextAreaOption = false;
+                                isTextArea = false;
+                            }
+                    }
+                    break;
             }
         }
     }
