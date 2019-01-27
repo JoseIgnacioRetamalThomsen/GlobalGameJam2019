@@ -19,6 +19,7 @@ public class SceneManager {
         List<SceneObject> sceneObjs;
         Image[] objFrames;
         SceneObject sceneObj;
+        SceneObject sceneObjInv;
         Image sceneBg;
         Image objMap = null;
 
@@ -32,10 +33,18 @@ public class SceneManager {
         Animation anim = new Animation(objFrames, 1);
         anim.setAutoUpdate(false);
         sceneObj = new SceneObject("drawer", Color.red, anim);
+
         sceneObj.addTakableItem(new Item("Key", new Image("Assets/Sprites/key.png")),
                 new ItemScreenPosition(1533, 549, 20));
+
+        sceneObjInv = new SceneObject("Weapon Placer", Color.red, blankAnim);
+
+        sceneObjInv.addTakableItem(new Item("Weapon", new Image("Assets/Sprites/key.png")),
+                new ItemScreenPosition(1200, 250, 30));
+
         sceneObj.setItemShowingFrame(1);
         sceneObjs.add(sceneObj);
+        sceneObjs.add(sceneObjInv);
 
         sceneObjs.add(new SceneObject("door", new Color(76, 255, 0), blankAnim));
         sceneObjs.add(new SceneObject("window", new Color(72, 0, 255), blankAnim));
