@@ -7,6 +7,7 @@ import davidneilan.com.PlayersStuff.HeroAnimation;
 import davidneilan.com.PlayersStuff.Player;
 import davidneilan.com.PlayersStuff.Position;
 import davidneilan.com.SceneManager;
+import davidneilan.com.game_state.menu.OnScreenMenu;
 import davidneilan.com.inter.English;
 import davidneilan.com.inter.French;
 import davidneilan.com.inter.Language;
@@ -169,6 +170,9 @@ public class PlayingGameState extends TransferableGameState {
                     (int) player.getMovementComponent().getCurrentPos().getY() - 5,
                     10, 10);
         }
+
+        // render on screen menu
+        OnScreenMenu.render(g);
     }
 
     @Override
@@ -333,6 +337,11 @@ public class PlayingGameState extends TransferableGameState {
 
 
             }
+        }
+
+        // esc for on screen menu
+        if( key == Input.KEY_ESCAPE ){
+            System.exit(1);
         }
     }
 
