@@ -102,12 +102,17 @@ public class PlayingGameState extends TransferableGameState {
 */
 
         this.textArea = new TextArea();
-        this.textArea.setText(language.getString("S1_KNOCK"));
+
 
     }
 
+    boolean isFirst = true;
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+        if(isFirst){
+            this.textArea.setText(language.getString("S1_KNOCK"));
+            isFirst=false;
+        }
         Input input = gc.getInput();
         debug = input.isKeyDown(DEBUG_BUTTON);
 
@@ -117,6 +122,7 @@ public class PlayingGameState extends TransferableGameState {
     public static boolean isTextArea = true;
     public static boolean isTextAreaOption = false;
 
+
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         // render current scene
@@ -125,7 +131,7 @@ public class PlayingGameState extends TransferableGameState {
 
         //say gelow
         g.setColor(Color.blue);
-        g.drawString(" " + language.getString("S0_GREET"), 600, 600);
+       // g.drawString(" " + language.getString("S0_GREET"), 600, 600);
 
 
         if (debug) {
