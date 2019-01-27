@@ -28,7 +28,7 @@ public class Spanish implements Language {
 
         strings.put("SHOP_IN","HOLA:");
         strings.put("SELL_PHONE","QUIERES VENDER TU TELÉFONO POR 1500?");
-        strings.put("BUY","QUIERES COMPRAR UN NEUMÁTICO POR 2000?");
+        strings.put("BUY","QUIERES COMPRAR UN NEUMÁTICO POR 1919?");
         strings.put("NO_MONEY","NO TENGO TIEMPO PARA TI , CONSIGUE DINERO");
 
         strings.put("BUY_TICKET","COMPRE UN BOLETO POR 2000");
@@ -36,6 +36,8 @@ public class Spanish implements Language {
 
         strings.put("METRO_1","HOLA, MI LLANTA ESTA QUEBRADA NECESITO ARREGLARLA.");
         strings.put("METRO_2","OOH, TIENES UN NEUMATICO, PUEDES DÁRMELO? ");
+        strings.put("METRO_3","PARA REGALER EL NEUMATICO ");
+        strings.put("METRO_4","GRACIAS, TOMA ESTO... ");
     }
 
 

@@ -1,13 +1,9 @@
 package davidneilan.com.game_state;
 
-import davidneilan.com.ClickedObjects;
-import davidneilan.com.Item;
-import davidneilan.com.Inventory;
+import davidneilan.com.*;
 import davidneilan.com.PlayersStuff.HeroAnimation;
 import davidneilan.com.PlayersStuff.Player;
 import davidneilan.com.PlayersStuff.Position;
-import davidneilan.com.SceneManager;
-import davidneilan.com.game_state.menu.OnScreenMenu;
 import davidneilan.com.inter.English;
 import davidneilan.com.inter.French;
 import davidneilan.com.inter.Language;
@@ -55,10 +51,11 @@ public class PlayingGameState extends TransferableGameState {
         return 1;
     }
 
+    TVAnim tv;
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 
-
+         tv= new TVAnim();
         sceneManager = new SceneManager();
         sceneManager.init();
 /*
@@ -108,6 +105,7 @@ public class PlayingGameState extends TransferableGameState {
     }
 
     boolean isFirst = true;
+
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         if(isFirst){
@@ -118,6 +116,10 @@ public class PlayingGameState extends TransferableGameState {
         debug = input.isKeyDown(DEBUG_BUTTON);
 
         this.player.update();
+
+
+        //tv.draw(1190,270);
+
     }
 
     public static boolean isTextArea = true;
@@ -128,6 +130,9 @@ public class PlayingGameState extends TransferableGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         // render current scene
         sceneManager.render(g);
+
+        if(SceneManager.currentScene==0)
+        tv.draw(0,0);
 
 
         //say gelow
@@ -171,8 +176,8 @@ public class PlayingGameState extends TransferableGameState {
                     10, 10);
         }
 
-        // render on screen menu
-        OnScreenMenu.render(g);
+       // tv.getAnim().draw(1000,270);
+
     }
 
     @Override

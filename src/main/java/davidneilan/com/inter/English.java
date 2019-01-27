@@ -34,7 +34,7 @@ public class English implements Language {
         strings.put("BUY_TICKET","BUY A TICKET FOR 2123");
 
         strings.put("NEED_TICKET","YOU NEED A TICKER FOR GET THE METRO");
-        strings.put("METRO_1","HI MY TYRE IS BROKEN I NEED TO FIX IT");
+        strings.put("METRO_1","HI MY TYRE IS BROKEN, CAN YOU HELP ME?");
         strings.put("METRO_2","OOH, I SEE YOU HAVE A TYRE, CAN I HAVE IT? ");
         strings.put("METRO_3","FOR GIVE THE TYRE ");
         strings.put("METRO_4","THANKS!!! TAKE THIS... ");
