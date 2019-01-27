@@ -41,7 +41,7 @@ public class SceneManager {
         sceneObjInv = new SceneObject("Weapon Placer", Color.red, blankAnim);
 
         sceneObjInv.addTakableItem(new Item("Weapon", new Image("Assets/Sprites/tyreiron.png")),
-                new ItemScreenPosition(1000, 550, 35));
+                new ItemScreenPosition(1000, 550, 135));
 
         sceneObj.setItemShowingFrame(1);
         sceneObjs.add(sceneObj);
