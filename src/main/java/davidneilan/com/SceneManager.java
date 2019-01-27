@@ -218,7 +218,6 @@ public class SceneManager {
                 if (name.equals("metro")) {
 
                    if(PlayingGameState.inventory.hasItem("Ticket")){
-                       System.out.println("WIN");
                        PlayingGameState.sceneManager.goToScene(5);
 
                    }else{
@@ -244,9 +243,6 @@ public class SceneManager {
                                 PlayingGameState.language.getString("METRO_2"),
                                 PlayingGameState.language.getString("S1_PRESS"),
                                 PlayingGameState.language.getString("METRO_3")
-
-
-
                         ));
                         PlayingGameState.isTextAreaOption = true;
                     }else {

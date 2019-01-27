@@ -17,7 +17,7 @@ public class Game extends StateBasedGame {
      * Screen height
      */
     private static final int HEIGHT = 1080;
-    private static final String GAME_NAME = "Untitled";
+    private static final String GAME_NAME = "Hard Way Home";
 
     public Game() {
         super(GAME_NAME);
@@ -40,6 +40,7 @@ public class Game extends StateBasedGame {
         app.setTargetFrameRate(60);
         app.setMaximumLogicUpdateInterval(16);
         app.setVSync(true);
+        app.setShowFPS(false);
         app.start();
     }
 }

@@ -217,10 +217,7 @@ public class PlayingGameState extends TransferableGameState {
         if (itemClicked.hasSceneObject()) {
             action = itemClicked.getSceneObject().getName();
             sceneManager.showDialog(action, isTextAreaOption, isTextArea);
-            System.out.println("Clicked: " + itemClicked.getSceneObject().getName());
 
-        } else {
-            System.out.println("Clicked nothing");
         }
 
 
@@ -241,13 +238,11 @@ public class PlayingGameState extends TransferableGameState {
         boolean exitButtonY = 510 < y && y < 560;
         if (exitButtonX && exitButtonY) {
             this.textArea.clearText();
-            System.out.println("Clear text");
         }
     }
 
     @Override
     public void keyPressed(int key, char c) {
-        System.out.println(Input.KEY_Q);
         if (key == Input.KEY_Q && !inventory.isEmpty()) {
 
             inventory.dropSelectedItem();
@@ -259,7 +254,6 @@ public class PlayingGameState extends TransferableGameState {
                     switch (action) {
                         case "door":
                             if (key == Input.KEY_A) {
-                                System.out.println("Working");
                                 sceneManager.goToScene(2);
                                 isTextAreaOption = false;
                                 isTextArea = false;
@@ -299,7 +293,6 @@ public class PlayingGameState extends TransferableGameState {
                             if (key == Input.KEY_S) {
                                 inventory.addCash(2200);
                                 int slot = inventory.getItemSlot("Phone");
-                                System.out.println(slot);
                                 inventory.removeItem(slot + 1);
                                 isTextAreaOption = false;
                                 isTextArea = false;
@@ -346,7 +339,7 @@ public class PlayingGameState extends TransferableGameState {
 
         // esc for on screen menu
         if( key == Input.KEY_ESCAPE ){
-            System.exit(1);
+            System.exit(0);
         }
     }
 

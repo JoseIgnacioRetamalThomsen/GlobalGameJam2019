@@ -30,10 +30,7 @@ public class Inventory {
         this.boxSize = boxSize;
 
         try {
-            imgBar = new Image("Assets/Sprites/ItemBarBackground.png");
-
             sh = new SpriteSheet("Assets/Sprites/inventory.png", 810, 135);
-
         } catch (SlickException e) {
             e.printStackTrace();
         }
@@ -110,8 +107,6 @@ public class Inventory {
         for (Item items : items.values()) {
             if(items !=null) {
                 if (items.getName().equals(itemName)) return true;
-
-                System.out.println(items.getName());
             }
         }
         return false;
@@ -121,8 +116,6 @@ public class Inventory {
         for (Item items : items.values()) {
             if(items !=null) {
                 if (items.getName().equals(itemName)) return count;
-
-
             }
             count++;
         }
@@ -136,7 +129,6 @@ public class Inventory {
      * @return box number 1 to 6 , -1 if no box clicked
      */
     public int getSlot(int x, int y) {
-
         if (x >= barX && x < barX + boxSize * 6 && y >= barY && y < barY + boxSize) {
 
             return (int) (x - barX) / 135 + 1;
@@ -154,11 +146,7 @@ public class Inventory {
     public void selectionListener(int x, int y) {
         int selection = getSlot(x, y);
         if (selection > 0 && selection <= items.size()) {
-
-            System.out.println(selection);
-
             selectedItem = selectedItem != selection ? selection : 0;
-
         } else {
             selectedItem = 0;
         }
