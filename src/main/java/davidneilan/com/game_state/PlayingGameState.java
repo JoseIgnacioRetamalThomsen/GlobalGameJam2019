@@ -196,52 +196,17 @@ public class PlayingGameState extends TransferableGameState {
             sceneManager.showDialog(action, isTextAreaOption, isTextArea);
             System.out.println("Clicked: " + itemClicked.getSceneObject().getName());
 
-            if (itemClicked.getSceneObject().getName().equals("door")) {
-
-                System.out.println("has key " + player.searchItem("Key"));
-                if (inventory.hasItem("Key")) {
-                    isTextAreaOption = true;
-                    this.textArea.setText(String.format("%s %s %s A \n %s %s %s S",
-                            language.getString("S1_FOR"),
-                            language.getString("S6_DOOR_2"),
-                            language.getString("S1_PRESS"),
-                            language.getString("S1_FOR"),
-                            language.getString("S6_DOOR_2"),
-                            language.getString("S5_DOOR_1")
-                    ));
-                } else {
-                    this.textArea.setText(String.format("%s", language.getString("S1_NEEDKEY")));
-                }
-                isTextArea = true;
-
-            } else if (itemClicked.getSceneObject().getName().equals("window")) {
-
-                isTextAreaOption = true;
-                this.textArea.setText(String.format("%s %s %s A \n %s %s %s S",
-                        language.getString("S1_FOR"),
-                        language.getString("S2_WIN_1"),
-                        language.getString("S1_PRESS"),
-
-                        language.getString("S3_WIN_2"),
-                    language.getString("S3_WIN_2"),
-                    language.getString("S1_PRESS")
-                ));
+        } else {
+            System.out.println("Clicked nothing");
+        }
 
 
-                isTextArea = true;
+        if (itemClicked != null) {
 
-
-            } else {
-                System.out.println("Clicked nothing");
-
-            }
-
-
-        inventory.addItem(itemClicked.getItem());
+            inventory.addItem(itemClicked.getItem());
+        }
 
     }
-
-}
 
     @Override
     public void mouseReleased(int button, int x, int y) {
@@ -300,28 +265,23 @@ public class PlayingGameState extends TransferableGameState {
                     }
                     break;
 
-
                 //pawn shop
                 case 3:
                     switch (action) {
                         case "shop":
 
-
                             if (key == Input.KEY_S) {
                                 inventory.addCash(1500);
                                 int slot = inventory.getItemSlot("Phone");
                                 System.out.println(slot);
-
                                 inventory.removeItem(slot + 1);
                                 isTextAreaOption = false;
                                 isTextArea = false;
                             } else if (key == Input.KEY_B) {
                                 if (inventory.getCash(2000)) {
-
                                     inventory.addItem(tyre);
                                     isTextAreaOption = false;
                                     isTextArea = false;
-
 
                                 } else {
                                     textArea.setText(PlayingGameState.language.getString("NO_MONEY"));
@@ -334,18 +294,17 @@ public class PlayingGameState extends TransferableGameState {
                     switch (action) {
                         case "shop":
                             if (key == Input.KEY_B) {
-                                if (inventory.getCash(2000)) {
+                                if(inventory.getCash(2000)){
                                     inventory.addItem(ticket);
                                     isTextAreaOption = false;
                                     isTextArea = false;
-                                } else {
+                                }else{
                                     textArea.setText(PlayingGameState.language.getString("NO_MONEY"));
                                 }
                             }
                             break;
                     }
                     break;
-
 
 
             }
