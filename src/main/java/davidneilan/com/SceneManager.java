@@ -226,9 +226,9 @@ public class SceneManager {
 
                     if(PlayingGameState.inventory.hasItem("Tyre")){
                         PlayingGameState.textArea.setText(String.format("%S %n %S  G %s ",
-                                PlayingGameState.language.getString("METRO_G"),
+                                PlayingGameState.language.getString("METRO_2"),
                                 PlayingGameState.language.getString("S1_PRESS"),
-                                PlayingGameState.language.getString("METRO_V")
+                                PlayingGameState.language.getString("METRO_3")
 
 
 

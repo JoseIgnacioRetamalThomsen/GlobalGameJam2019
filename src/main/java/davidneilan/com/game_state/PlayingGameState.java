@@ -325,6 +325,7 @@ public class PlayingGameState extends TransferableGameState {
                                 int slot = inventory.getItemSlot("Tyre");
                                 inventory.removeItem(slot + 1);
                                 inventory.addItem(phone);
+                                textArea.setText(PlayingGameState.language.getString("METRO_4"));
                             }
                             break;
                     }
