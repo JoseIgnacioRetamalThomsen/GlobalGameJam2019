@@ -205,7 +205,7 @@ public class PlayingGameState extends TransferableGameState {
                 }
                 isTextArea = true;
             }
-<<<<<<< HEAD
+
             else if( itemClicked.getSceneObject().getName().equals("window") ){
 
                 isTextAreaOption=true;
@@ -213,22 +213,21 @@ public class PlayingGameState extends TransferableGameState {
                         language.getString("S1_FOR"),
                         language.getString("S2_WIN_1"),
                         language.getString("S1_PRESS"),
-                        language.getString("S1_FOR"),
-                        language.getString("S3_WIN_2"),
-                        language.getString("S1_PRESS")
+        if (itemClicked != null) {
+            language.getString("S1_FOR"),
+                    language.getString("S3_WIN_2"),
+                    language.getString("S1_PRESS")
                 ));
 
-                isTextArea = true;
-            }
-=======
->>>>>>> 1a3278dd410c31fc56344fe1bf090bec47e33be8
-
-        } else {
-            System.out.println("Clicked nothing");
+            isTextArea = true;
         }
 
 
-        if (itemClicked != null) {
+    } else {
+        System.out.println("Clicked nothing");
+    }
+
+
 
             inventory.addItem(itemClicked.getItem());
         }
